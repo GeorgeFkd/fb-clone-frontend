@@ -1,0 +1,16 @@
+.homepage__container {
+    display: flex;
+    height: 100vh;
+}
+
+.homepage__right {
+    flex-basis: 25%;
+}
+
+.homepage__center {
+    flex-grow: 1;
+}
+
+.homepage__left {
+    flex-basis: 25%;
+}
