@@ -19,10 +19,15 @@
 }
 
 .navmenu-option:hover .navmenu-option-tooltip {
+    transition-property: opacity;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    opacity: 1;
     visibility: visible;
 }
 
 .navmenu-option-tooltip {
+    opacity: 0;
     visibility: hidden;
     position: absolute;
     background-color: var(--global-tooltipColor);

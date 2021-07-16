@@ -9,11 +9,9 @@ import {CgScreen} from "react-icons/cg"
 
 const Navbar:React.FC = () => {
     const btns = document.getElementsByClassName("navbar-navicon__container");
-    console.log(btns)
     let mybtn = btns.item(0);
 
-    // mybtn?.setAttribute("enabled","true");
-    console.log(mybtn);
+    //? when refreshing it doesnt get blue only when reloading
     mybtn?.setAttribute("enabled","true");
     //! THIS IS FKIN ILLEGAL GONNA DO IT SOME OTHER WAY 
     function setEnabledNavIcon(e:any){
@@ -48,30 +46,11 @@ const Navbar:React.FC = () => {
              {/* extract to component */}
             <div className="navbar__center" onClick={(e)=>setEnabledNavIcon(e)}>
                 
-                <div className="navbar-navicon__container">
-                <IconContext.Provider value={{className:"navbar-navicon"}}>
-                    <FaHome />
-                </IconContext.Provider>
-                <span className="navbar-navicon-tooltip">Home</span>
-                </div>
                 
-                <div className="navbar-navicon__container" onClick={(e)=>setEnabledNavIcon(e)}>
-
-                <IconContext.Provider value={{className:"navbar-navicon"}}>
-                    <CgScreen />
-                </IconContext.Provider>
-                                <span className="navbar-navicon-tooltip">Home</span>
-
-                </div>
-                {/* can be done with only reference */}
-                <div className="navbar-navicon__container" onClick={(e)=>setEnabledNavIcon(e)}>
-
-                <IconContext.Provider value={{className:"navbar-navicon"}}>
-                    <MdStoreMallDirectory />
-                </IconContext.Provider>
-                                <span className="navbar-navicon-tooltip">Home</span>
-
-                </div>
+                <NavLink tooltip="Home" Icon={FaHome}/>
+                <NavLink tooltip="Watch" Icon={CgScreen} />
+                <NavLink tooltip="MarketPlace" Icon={MdStoreMallDirectory} />
+               
             </div>
 
 
@@ -95,3 +74,17 @@ const Navbar:React.FC = () => {
 }
 
 export default Navbar
+interface Props{
+    tooltip:string,
+    Icon:React.FC
+}
+
+const  NavLink:React.FC<Props> = ({tooltip,Icon}) => {
+    return <div className="navbar-navicon__container">
+        <IconContext.Provider value={{ className: "navbar-navicon" }}>
+            <Icon />
+        </IconContext.Provider>
+        <span className="navbar-navicon-tooltip">{tooltip}</span>
+    </div>;
+}
+
