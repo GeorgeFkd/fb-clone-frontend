@@ -12,9 +12,20 @@ code {
         monospace;
 }
 
+hr {
+    margin: 0;
+}
+
 :root {
     --global-primary: #1c1e21;
     --global-primaryLight: #272a2e;
     --global-hoverGray: #525459;
     --global-tooltipColor: #bebaba;
+}
+
+.row:hover {
+    transition-property: background-color;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+    background-color: var(--global-hoverGray);
 }

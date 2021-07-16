@@ -1,0 +1,90 @@
+.leftsidebar__container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--global-primary);
+    padding-left: 1rem;
+    height: 100vh;
+}
+
+.leftsidebar-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0.5rem;
+    padding: 0 0.5rem;
+    cursor: pointer;
+}
+
+.leftbar-icon {
+    height: 2rem;
+    width: 2rem;
+    color: cornflowerblue;
+}
+
+.leftbar-title {
+    color: white;
+    font-weight: 700;
+}
+
+.more__less-button {
+    background-color: var(--global-primaryLight);
+    border-radius: 999px;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.more__less-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    color: white;
+}
+
+.leftbar-shortcuts-title {
+    display: flex;
+    align-items: center;
+}
+
+.leftbar-shortcuts-edit {
+    color: blue;
+    font-size: 1.1rem;
+    visibility: hidden;
+    margin-left: auto;
+    margin-right: 1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.leftbar-shortcuts-title:hover .leftbar-shortcuts-edit {
+    visibility: visible;
+}
+
+.leftbar-shortcuts-title p {
+    color: gray;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.leftbar-shortcuts {
+    display: flex;
+    flex-direction: column;
+}
+
+.leftbar-details {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.leftbar-details p {
+    color: gray;
+    font-size: 0.8rem;
+    display: block;
+}
+
+.leftbar-details p:hover {
+    text-decoration: underline;
+}

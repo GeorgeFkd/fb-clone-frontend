@@ -6,6 +6,7 @@ import { MdTv,MdStoreMallDirectory } from "react-icons/md";
 import NavMenuOption from './NavMenuOption';
 import { HiMenu } from "react-icons/hi"
 import {CgScreen} from "react-icons/cg"
+import {TiThSmall} from "react-icons/ti"
 
 const Navbar:React.FC = () => {
     const btns = document.getElementsByClassName("navbar-navicon__container");
@@ -63,10 +64,10 @@ const Navbar:React.FC = () => {
                 </div>
                 <div className="navmenu">
                 {/* text stuff here */}
-                <NavMenuOption tooltipText="menu" Icon={HiMenu} />
-                <NavMenuOption tooltipText="menu" Icon={FaFacebookMessenger} />
-                <NavMenuOption tooltipText="menu" Icon={FaBell} />
-                <NavMenuOption tooltipText="menu" Icon={FaCaretDown} />
+                <NavMenuOption tooltipText="Menu" Icon={TiThSmall} />
+                <NavMenuOption tooltipText="Messenger" Icon={FaFacebookMessenger} />
+                <NavMenuOption tooltipText="Notifications" Icon={FaBell} />
+                <NavMenuOption tooltipText="Account" Icon={FaCaretDown} />
                 </div>
             </div>
         </div>
