@@ -11,6 +11,7 @@ const LeftSideBar = () => {
     const iconsArr = [MdGroup,FiMonitor,BsBookmarkFill,IoPeopleCircleSharp,BiCalendarStar]
     const rowsText = ["Friends","Watch","Saved","Groups","Events"];
     const detailsText = ["Privacy","Terms","Advertising","Ad choices"]
+    //TODO HEIGHT STUFF AND THE MARGIN ON THE RIGHT 
     return (
         <div className="leftsidebar__container">
             {iconsArr.map((Icon,index)=>{

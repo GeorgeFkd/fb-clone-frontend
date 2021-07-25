@@ -29,3 +29,17 @@ hr {
     transition-timing-function: ease-in-out;
     background-color: var(--global-hoverGray);
 }
+
+.more-options-icon {
+    /* morehoriz stuff */
+}
+
+.dropdown__container {
+    position: absolute;
+    top: 3.3rem;
+    right: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    background-color: var(--global-primaryLight);
+}

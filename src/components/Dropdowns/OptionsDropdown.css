@@ -1,0 +1,37 @@
+.options-dropdown {
+    width: 375px;
+    padding: 0.5rem 1rem;
+}
+
+.options-dropdown-title {
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.options-dropdown-title img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 999px;
+}
+
+.options-dropdown-title:hover {
+    background-color: var(--global-hoverGray);
+}
+
+.options-dropdown-title-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+/* keep an eye on these */
+.options-dropdown-title-content *:nth-child(1) {
+    color: white;
+    font-weight: 700;
+}
+
+.options-dropdown-title-content *:nth-child(2) {
+    color: gray;
+    font-weight: 700;
+}

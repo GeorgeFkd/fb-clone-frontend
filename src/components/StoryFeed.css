@@ -1,0 +1,43 @@
+.storyfeed__container{
+    display: flex;
+    gap:0.5rem;
+    background-color: var(--global-primaryLight);
+    height:200px;
+}
+
+.storyfeed-more{
+    margin-left: auto;
+    background-color: var(--global-primary);
+    align-self: center;
+    border-radius: 999px;
+    cursor: pointer;
+    position: relative;
+}
+.storyfeed-more:hover{
+    background-color: var(--global-hoverGray);
+}
+
+.storyfeed-more-icon{
+    height:2rem;
+    width:2rem;
+    color:white;
+}
+
+.storyfeed-more:hover .storyfeed-more-icon-tooltip{
+   transition-property: opacity;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    opacity: 1;
+    visibility: visible;
+
+}
+
+.storyfeed-more-icon-tooltip{
+     opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    background-color: var(--global-tooltipColor);
+    border-radius: 0.25rem;
+    top: 2.5rem;
+    left:0rem;
+}

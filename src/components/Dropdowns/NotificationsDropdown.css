@@ -1,0 +1,30 @@
+.notifications-dropdown {
+    gap: 0.5rem;
+    max-height: 550px;
+    overflow-y: hidden;
+}
+.notifications-dropdown-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+/* the title of the notifications dropdown */
+.notifications-dropdown-title > * {
+    color: white;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.notifications-dropdown-subtitle {
+    display: flex;
+}
+
+.notifications-dropdown-subtitle > * {
+    color: white;
+    font-size: 1.25rem;
+}
+
+.notifications-main-content {
+    display: flex;
+    flex-direction: column;
+}

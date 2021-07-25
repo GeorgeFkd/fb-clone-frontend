@@ -1,8 +1,18 @@
 import React from 'react'
-
-const Story = () => {
+import "./Story.css"
+interface Props{
+    avatarImg:string;
+    contentImg:string;
+    authorName:string,
+    authorId:string
+}
+const Story:React.FC<Props> = ({avatarImg,contentImg,authorName,authorId}) => {
     return (
-        <div>
+        <div className="story-container" >
+            <img src={contentImg} className="story-content"/>
+
+                <img src={avatarImg} className="avatar"/>
+            <p className="author-name">{authorName}</p>
             
         </div>
     )
