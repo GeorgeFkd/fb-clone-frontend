@@ -1,12 +1,12 @@
-import React from 'react'
-import PostHeader from './PostHeader'
+import React from "react";
+import PostHeader from "./PostHeader";
 
 const Post = () => {
-    return (
-        <div className="post__container">
-            <PostHeader />
-        </div>
-    )
-}
+  return (
+    <div className="post-container">
+      <PostHeader />
+    </div>
+  );
+};
 
-export default Post
+export default Post;

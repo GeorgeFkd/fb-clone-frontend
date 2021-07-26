@@ -1,3 +1,6 @@
-.mainfeed__container{
-    background-color: var(--global-primary);
+.mainfeed__container {
+  background-color: var(--global-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
