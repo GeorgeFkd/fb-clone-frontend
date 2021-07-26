@@ -1,45 +1,46 @@
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
 hr {
-    margin: 0;
+  margin: 0;
 }
 
 :root {
-    --global-primary: #1c1e21;
-    --global-primaryLight: #272a2e;
-    --global-hoverGray: #525459;
-    --global-tooltipColor: #bebaba;
+  --global-primary: #1c1e21;
+  --global-primaryLight: #272a2e;
+  --global-hoverGray: #525459;
+  --global-tooltipColor: #bebaba;
+  color: white;
 }
 
 .row:hover {
-    transition-property: background-color;
-    transition-duration: 250ms;
-    transition-timing-function: ease-in-out;
-    background-color: var(--global-hoverGray);
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  background-color: var(--global-hoverGray);
 }
 
 .more-options-icon {
-    /* morehoriz stuff */
+  /* morehoriz stuff */
 }
 
 .dropdown__container {
-    position: absolute;
-    top: 3.3rem;
-    right: 1rem;
+  position: absolute;
+  top: 3.3rem;
+  right: 1rem;
 
-    display: flex;
-    flex-direction: column;
-    background-color: var(--global-primaryLight);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--global-primaryLight);
 }

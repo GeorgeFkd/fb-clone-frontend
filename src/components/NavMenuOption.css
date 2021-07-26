@@ -1,36 +1,35 @@
 .navmenu-option {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 999px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 999px;
 }
 .navmenu-option:hover {
-    background-color: var(--global-hoverGray);
+  background-color: var(--global-hoverGray);
 }
 
 .navmenu-option-icon {
-    color: white;
-    height: 1.5rem;
-    width: 1.5rem;
-    cursor: pointer;
+  height: 1.5rem;
+  width: 1.5rem;
+  cursor: pointer;
 }
 
 .navmenu-option:hover .navmenu-option-tooltip {
-    transition-property: opacity;
-    transition-duration: 300ms;
-    transition-timing-function: ease-in-out;
-    opacity: 1;
-    visibility: visible;
+  transition-property: opacity;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+  opacity: 1;
+  visibility: visible;
 }
 
 .navmenu-option-tooltip {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    background-color: var(--global-tooltipColor);
-    border-radius: 0.25rem;
-    top: 3rem;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  background-color: var(--global-tooltipColor);
+  border-radius: 0.25rem;
+  top: 3rem;
 }

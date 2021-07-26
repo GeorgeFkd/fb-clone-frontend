@@ -1,42 +1,38 @@
-.story-container{
-    position: relative;
-    transition: transform .2s ease-in-out;
-    cursor: pointer;
+.story-container {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
 }
 
-.story-container:hover{
-    transform:scale(1.05);
+.story-container:hover {
+  transform: scale(1.05);
 }
-
 
 .avatar {
-    position: absolute;
-    top:1rem;
-    left:1rem;
-    border-radius: 999px;
-    height:2rem;
-    width:2rem;
-    border-width:0.25rem;
-    border-color:blue;
-    border-style:solid;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  border-width: 0.25rem;
+  border-color: blue;
+  border-style: solid;
 }
 
-.story-content{
-    height:200px;
-    width:100px;
-    border-radius:0.5rem;
+.story-content {
+  height: 200px;
+  width: 100px;
+  border-radius: 0.5rem;
 }
 /* the position absolute prob messes with overflow */
-.author-name{
-    position: absolute;
-    bottom:0rem;
-    left:0rem;
-    color:black;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    font-size: 0.75rem;
-    font-weight: 700;
+.author-name {
+  position: absolute;
+  bottom: 0rem;
+  left: 0rem;
+  color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-size: 0.75rem;
+  font-weight: 700;
 }
