@@ -1,0 +1,88 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: var(--global-primaryLight);
+}
+
+.login-title {
+  align-self: center;
+}
+
+.login-input {
+  line-height: 3.5rem;
+  font-size: 1.5rem;
+  outline: none;
+  border-radius: 4px;
+  background-color: cornflowerblue;
+  color: white;
+  width: 18rem;
+  caret-color: black;
+}
+
+.login-input::placeholder {
+  color: white;
+  opacity: 0.8;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  background-color: crimson;
+  height: 30rem;
+  width: 25rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.login-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input-label {
+  font-weight: 700;
+}
+
+.login-forgotpassword {
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.login-forgotpassword:hover {
+  text-decoration: underline solid;
+}
+
+.login-button {
+  cursor: pointer;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  width: 80%;
+  border-radius: 1rem;
+  transition: ease-in-out 200ms;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.login-button:hover {
+  background-color: yellowgreen;
+  color: white;
+}
+
+.login-noaccount {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  justify-content: space-between;
+}
+
+.login-icon {
+  font-size: 1.4rem;
+  margin-left: 1rem;
+}

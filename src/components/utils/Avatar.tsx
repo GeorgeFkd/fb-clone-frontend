@@ -4,7 +4,7 @@ import "./Avatar.css";
 interface Props {
   src: string;
   size: number;
-  className: string;
+  className?: string;
 }
 
 const Avatar: React.FC<Props> = ({ src, size, className }) => {

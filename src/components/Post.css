@@ -1,4 +1,6 @@
 .post-container {
   display: flex;
   flex-direction: column;
+  background-color: var(--global-primaryLight);
+  padding: 1rem;
 }

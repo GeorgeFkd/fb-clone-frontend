@@ -1,4 +1,63 @@
 .postheader-container {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
+  padding: 0rem 1rem;
+}
+
+.postheader-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.postheader-info {
+  display: flex;
+  gap: 0.25rem;
+  font-weight: 700;
+  align-items: center;
+  height: min-content;
+}
+
+.postheader-author {
+  cursor: pointer;
+}
+.postheader-group {
+  cursor: pointer;
+}
+
+.postheader-author:hover {
+  text-decoration: underline solid;
+}
+
+.postheader-group:hover {
+  text-decoration: underline solid;
+}
+
+.postheader-date {
+  color: gray;
+  opacity: 0.9;
+  cursor: pointer;
+}
+.postheader-date:hover {
+  text-decoration: solid underline;
+}
+
+.postheader-moreoptions {
+  margin-left: auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+}
+
+.postheader-moreoptions:hover {
+  background-color: var(--global-hoverGray);
+}
+
+.moreoptions-icon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
 }
