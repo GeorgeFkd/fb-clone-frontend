@@ -31,6 +31,7 @@
   border: none;
   cursor: pointer;
   caret-color: white;
+  height: 1.5rem;
 }
 
 .search-input::placeholder {
@@ -42,6 +43,13 @@
   height: 2.5rem;
   width: 2.5rem;
   margin-left: 1rem;
+}
+
+.arrowleft-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-left: 1rem;
+  color: red;
 }
 
 .search-icon {
