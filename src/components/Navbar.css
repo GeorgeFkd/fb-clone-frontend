@@ -83,11 +83,19 @@
   background-color: var(--global-hoverGray);
 }
 
-.navbar-navicon__container[enabled="true"] .navbar-navicon {
+/* .navbar-navicon__container[enabled="true"] .navbar-navicon {
   color: blue !important;
 }
 
 .navbar-navicon__container[enabled="true"] {
+  border: 2px solid transparent !important;
+  border-bottom-color: blue !important;
+} */
+
+.navbar-navicon--active {
+  color: blue !important;
+}
+.navbar-navicon__container--active {
   border: 2px solid transparent !important;
   border-bottom-color: blue !important;
 }

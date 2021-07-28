@@ -44,3 +44,15 @@ hr {
   flex-direction: column;
   background-color: var(--global-primaryLight);
 }
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+.link:focus,
+.link:hover,
+.link:link,
+.link:active {
+  text-decoration: none;
+  color: inherit;
+}

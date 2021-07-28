@@ -18,6 +18,7 @@ import { BsArrowLeft } from "react-icons/bs";
 import { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   // const [searchIsOpen, setSearchIsOpen] = useState(false);
@@ -48,34 +49,75 @@ const Navbar: React.FC = () => {
   //   searchIcon.setAttribute("opacity", "0");
   //   setSearchIsOpen(true);
   // }
-  const btns = document.getElementsByClassName("navbar-navicon__container");
-  let mybtn = btns.item(0);
 
-  //? when refreshing it doesnt get blue only when reloading
-  mybtn?.setAttribute("enabled", "true");
-  //! THIS IS FKIN ILLEGAL GONNA DO IT SOME OTHER WAY
-  function setEnabledNavIcon(e: any) {
-    const btns = document.getElementsByClassName("navbar-navicon__container");
-    console.log("the buttons", btns, e.target.tagName);
-    let elem = e.target;
-    //it is bcs it is different if i click the icon and if i click the div
-    if (e.target.tagName !== "DIV") {
-      console.log(elem);
-      while (!elem.classList?.contains("navbar-navicon__container")) {
-        console.log("the element ", elem, "\n");
-        elem = elem.parentElement;
-      }
+  let index = -1;
+  console.log(window.location.pathname);
+  switch (window.location.pathname) {
+    case "/Marketplace":
+      index = 2;
+      break;
+    case "/Watch":
+      index = 1;
+      break;
+    case "/":
+      index = 0;
+      break;
+    default:
+      break;
+  }
+  const btns = document.getElementsByClassName("navbar-navicon__container");
+  let mybtn = btns.item(index);
+
+  mybtn?.classList.add("navbar-navicon__container--active");
+  const NavIcons = document.getElementsByClassName("navbar-navicon");
+  const myIcon = NavIcons[index];
+  myIcon?.classList.add("navbar-navicon--active");
+  function setEnabledNavIcon(e: { target: any }) {
+    /* How it works:
+    There is an array of svgs and an array of divs to enable them on click and disable all the others
+    enable the one clicked => disable the others
+    */
+    const navLinkDivs = Array.from(
+      document.getElementsByClassName("navbar-navicon__container")
+    );
+
+    const navLinkSvgs = Array.from(
+      document.getElementsByClassName("navbar-navicon")
+    );
+    let elem = e.target as any;
+
+    //have to find out if i clicked on the svg the path or the div thats why i need this
+    if (
+      !e.target.classList.contains("navbar-navicon") &&
+      !e.target.classList.contains("navbar-navicon__container")
+    ) {
+      elem = elem.parentNode;
     }
-    elem.setAttribute("enabled", "true");
-    Array.from(btns)
-      .filter((btn) => btn !== elem)
-      .map((btn) => btn.removeAttribute("enabled"));
+
+    //is it an svg or a div?
+    if (navLinkDivs.indexOf(elem) === -1) {
+      index = Array.from(navLinkSvgs).indexOf(elem);
+    } else if (navLinkSvgs.indexOf(elem) === -1) {
+      //will be found in divs if not found in svgs
+      index = navLinkDivs.indexOf(elem);
+    }
+    console.log("the index", index);
+    //todo extract to function
+    //enable the one clicked => disable the others
+    navLinkDivs[index].classList.add("navbar-navicon__container--active");
+    navLinkSvgs[index].classList.add("navbar-navicon--active");
+    navLinkDivs
+      .filter((div, idx) => idx !== index)
+      .map((div) => div.classList.remove("navbar-navicon__container--active"));
+    navLinkSvgs
+      .filter((svg, idx) => idx !== index)
+      .map((svg) => svg.classList.remove("navbar-navicon--active"));
   }
 
   return (
     <div className="navbar__container">
       <div className="navbar__left">
-        <BsArrowLeft className="arrowleft-icon" />
+        {/* <BsArrowLeft className="arrowleft-icon" /> */}
 
         <FaFacebook className="facebook-icon" />
 
@@ -125,11 +167,13 @@ interface Props {
 
 const NavLink: React.FC<Props> = ({ tooltip, Icon }) => {
   return (
-    <div className="navbar-navicon__container">
-      <IconContext.Provider value={{ className: "navbar-navicon" }}>
-        <Icon />
-      </IconContext.Provider>
-      <span className="navbar-navicon-tooltip">{tooltip}</span>
-    </div>
+    <Link to={`/${tooltip}`} className="link">
+      <div className="navbar-navicon__container">
+        <IconContext.Provider value={{ className: "navbar-navicon" }}>
+          <Icon />
+        </IconContext.Provider>
+        <span className="navbar-navicon-tooltip">{tooltip}</span>
+      </div>
+    </Link>
   );
 };
