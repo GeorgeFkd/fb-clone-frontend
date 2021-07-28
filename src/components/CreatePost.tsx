@@ -4,7 +4,39 @@ import "./CreatePost.css";
 import CreatePostOption from "./CreatePostOption";
 import { HiOutlinePhotograph } from "react-icons/hi";
 import { CgSmileMouthOpen } from "react-icons/cg";
+import { useState } from "react";
+import { FiUpload } from "react-icons/fi";
 const CreatePost = () => {
+  const [postcontent, setPostcontent] = useState("");
+
+  async function savePostToDb(e: any) {
+    //this works but needs the group stuff
+    //todo get the id by the localstorage(+decryption)
+    const data = {
+      author_id: 4,
+      content: postcontent,
+      group_name: "emo goth grils",
+    };
+    console.log(postcontent);
+    const jwtToken = localStorage.getItem("user") as string;
+    console.log("my jwt", jwtToken);
+    const auth = "Authorization";
+    const response = await fetch("http://localhost:4000/posts/new", {
+      method: "POST",
+      headers: {
+        Authorization: jwtToken,
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log(response.status);
+    if (response.status === 201) {
+      console.log(response.statusText, "all ok");
+      setPostcontent("");
+    } else {
+      console.log("failed to create post ");
+    }
+  }
   return (
     <div className="createpost-container">
       <div className="createpost-textpost">
@@ -17,12 +49,14 @@ const CreatePost = () => {
           <input
             placeholder="what is on your mind?"
             className="createpost-input"
+            value={postcontent}
+            onChange={(e) => setPostcontent(e.target.value)}
           />
+          <FiUpload className="createpost-icon" onClick={savePostToDb} />
         </div>
       </div>
       <div className="createpost-divider"></div>
       <div className="createpost-options">
-        {/* export to component */}
         <CreatePostOption
           Icon={BsFillCameraVideoFill}
           iconColor="red"

@@ -1,12 +1,12 @@
 import React from "react";
 import "./LoginPage.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import { useState } from "react";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const history = useHistory();
   function validationCheck() {
     let result = "";
     if (!email.includes("@")) result += " invalid email ";
@@ -14,16 +14,28 @@ const LoginPage = () => {
     return result;
   }
   async function handleLogin(e: any) {
-    console.log(validationCheck());
-    console.log(
-      `Pls Make a request to the api with email ${email} and password ${password}`
-    );
-    const response = await fetch("https:localhost:4000/users/login", {
-      method: "POST",
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await response.json();
-    console.log(`data from an api ${data}`);
+    let data, response;
+    if (validationCheck()) return informUserForInvalidInput();
+    try {
+      response = await fetch("http://localhost:4000/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      data = await response.json();
+    } catch (err) {
+      console.error(err);
+    }
+
+    //! i have to somehow encrypt the id
+    if (response?.status === 201) {
+      console.log("Successfull login");
+      localStorage.setItem("user", data.token);
+
+      history.push("/");
+    }
   }
 
   function handleChange(e: any) {
@@ -55,6 +67,7 @@ const LoginPage = () => {
             placeholder="password"
             onChange={handleChange}
             value={password}
+            type="password"
           />
         </div>
         <span className="login-forgotpassword">Forgot your password?</span>
@@ -80,3 +93,8 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+function informUserForInvalidInput() {
+  console.log(
+    "User put your email properly and a password more than 20 characters"
+  );
+}
