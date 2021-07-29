@@ -1,0 +1,36 @@
+.postcontrols-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.postcontrols-details {
+  display: flex;
+}
+
+.postcontrols-buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.postcontrols-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-grow: 1;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0rem;
+}
+
+.postcontrols-button-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.postcontrols-button-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: gray;
+}

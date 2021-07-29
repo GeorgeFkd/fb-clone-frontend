@@ -1,6 +1,7 @@
 import React from "react";
 import PostHeader from "./PostHeader";
 import "./Post.css";
+import PostControls from "./PostControls";
 const Post = () => {
   return (
     <div className="post-container">
@@ -15,6 +16,7 @@ const Post = () => {
         accusamus unde odit deserunt fugiat soluta commodi perspiciatis
         laboriosam sit sapiente. Obcaecati?
       </p>
+      <PostControls />
     </div>
   );
 };

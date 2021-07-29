@@ -7,7 +7,10 @@ import { BiCalendarStar } from "react-icons/bi";
 import "./LeftSidebar.css";
 import { IconContext } from "react-icons/lib";
 import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
+import { useState } from "react";
 const LeftSideBar = () => {
+  const [openMore, setOpenMore] = useState(false);
+  // those will go on config
   const iconsArr = [
     MdGroup,
     FiMonitor,
@@ -17,6 +20,9 @@ const LeftSideBar = () => {
   ];
   const rowsText = ["Friends", "Watch", "Saved", "Groups", "Events"];
   const detailsText = ["Privacy", "Terms", "Advertising", "Ad choices"];
+  const hiddenIconsArr = iconsArr;
+  const hiddenRowsText = rowsText;
+
   //TODO HEIGHT STUFF AND THE MARGIN ON THE RIGHT
   return (
     <div className="leftsidebar__container">
@@ -30,14 +36,28 @@ const LeftSideBar = () => {
           </div>
         );
       })}
-      {/* todo implement the see more / see less event handler */}
-      <div className="row leftsidebar-row">
+
+      {openMore &&
+        hiddenIconsArr.map((Icon, index) => {
+          return (
+            <div className="row leftsidebar-row" key={index}>
+              <IconContext.Provider value={{ className: "leftbar-icon" }}>
+                <Icon />
+              </IconContext.Provider>
+              <p className="leftbar-title">{hiddenRowsText[index]}</p>
+            </div>
+          );
+        })}
+      <div
+        className="row leftsidebar-row"
+        onClick={(e) => setOpenMore(!openMore)}
+      >
         <div className="more__less-button">
           <IconContext.Provider value={{ className: "more__less-icon" }}>
-            {true ? <AiOutlineDown /> : <AiOutlineUp />}
+            {!openMore ? <AiOutlineDown /> : <AiOutlineUp />}
           </IconContext.Provider>
         </div>
-        <p className="leftbar-title">See {true ? "More" : "Less"}</p>
+        <p className="leftbar-title">See {!openMore ? "More" : "Less"}</p>
       </div>
       <hr style={{ backgroundColor: "gray", height: 1, border: "none" }} />
       <div className="leftbar-shortcuts">
