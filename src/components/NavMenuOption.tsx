@@ -1,27 +1,39 @@
-import React from 'react'
-import { IconContext } from 'react-icons/lib'
-import "./NavMenuOption.css"
-
-interface Props{
-    //todo implement the open close stuff the old way and add dropdowns
-    // any bcs icons are from different libs
-    Icon:React.FC,
-    tooltipText:string,
-    dropdown?:React.FC
-
+import React from "react";
+import { IconContext } from "react-icons/lib";
+import "./NavMenuOption.css";
+import { DropdownConsumer } from "./Navbar";
+interface Props {
+  //todo implement the open close stuff the old way and add dropdowns
+  // any bcs icons are from different libs
+  Icon: React.FC;
+  tooltipText: string;
+  Dropdown?: any;
+  onClick: (e: any) => void;
 }
 
-const NavMenuOption:React.FC<Props> = ({Icon,tooltipText,dropdown}) => {
-    return (
-        <div className="navmenu-option">
-            <IconContext.Provider value={{className:"navmenu-option-icon"}}>
-
+const NavMenuOption: React.FC<Props> = ({
+  Icon,
+  tooltipText,
+  Dropdown,
+  onClick,
+}) => {
+  console.log("not rendered yet");
+  return (
+    <DropdownConsumer.Consumer>
+      {(currentlyOpen) => (
+        <div className="navmenu-option" onClick={onClick}>
+          <IconContext.Provider value={{ className: "navmenu-option-icon" }}>
             <Icon />
-            </IconContext.Provider>
-            {/* tooltip */}
-            <span className="navmenu-option-tooltip">{tooltipText}</span>
-        </div>
-    )
-}
+            {console.log("the context currently is", currentlyOpen)}
+          </IconContext.Provider>
+          {/* tooltip */}
+          <span className="navmenu-option-tooltip">{tooltipText}</span>
 
-export default NavMenuOption
+          {tooltipText === currentlyOpen ? <Dropdown /> : <></>}
+        </div>
+      )}
+    </DropdownConsumer.Consumer>
+  );
+};
+
+export default NavMenuOption;

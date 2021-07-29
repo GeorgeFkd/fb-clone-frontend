@@ -1,6 +1,6 @@
-
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-
+import "./Option.css";
+import { IoMdArrowRoundForward } from "react-icons/io";
+import { IconContext } from "react-icons/lib";
 interface Props {
   Icon: React.FC;
   prompt: string;
@@ -8,18 +8,13 @@ interface Props {
 
 const Option: React.FC<Props> = ({ Icon, prompt }) => {
   return (
-    <div className="flex space-x-4 rounded-md   hover:bg-hoverGray items-center cursor-pointer my-2">
-      <Icon
-        // className="text-gray-500 rounded-full cursor-pointer p-1 bg-gray-700"
-        // fontSize="large"
-      />
+    <div className="option-container">
+      <IconContext.Provider value={{ className: "option-type-icon" }}>
+        <Icon />
+      </IconContext.Provider>
 
-      <p className={` text-white font-semibold flex-grow-1`}>{prompt}</p>
-      <ArrowForwardIosIcon
-        className=" text-gray-500 rounded-full cursor-pointer p-1 bg-gray-700"
-        style={{ marginLeft: "auto" }}
-        fontSize="large"
-      />
+      <p className="option-prompt">{prompt}</p>
+      <IoMdArrowRoundForward className="option-prompt-icon" />
     </div>
   );
 };

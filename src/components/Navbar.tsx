@@ -11,46 +11,21 @@ import {
 import { IconContext } from "react-icons";
 import { MdTv, MdStoreMallDirectory } from "react-icons/md";
 import NavMenuOption from "./NavMenuOption";
-import { HiMenu } from "react-icons/hi";
 import { CgScreen } from "react-icons/cg";
 import { TiThSmall } from "react-icons/ti";
-import { BsArrowLeft } from "react-icons/bs";
-import { useRef } from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import NotificationsDropdown from "./Dropdowns/NotificationsDropdown";
+import OptionsDropdown from "./Dropdowns/OptionsDropdown";
 
-const Navbar: React.FC = () => {
-  // const [searchIsOpen, setSearchIsOpen] = useState(false);
-  // const searchInputRef = useRef<HTMLInputElement>(null);
-  // let fbIcon: Element, arrowLeftIcon: Element, searchIcon: Element;
+const openDropdownContext = React.createContext("");
 
-  // useEffect(function () {
-  //   fbIcon = document.getElementsByClassName("facebook-icon")[0];
-  //   arrowLeftIcon = document.getElementsByClassName("arrowleft-icon")[0];
-  //   searchIcon = document.getElementsByClassName("search-icon")[0];
-  //   searchIcon.setAttribute("opacity", "1");
-  //   searchIcon.setAttribute("transition", "opacity 200ms ease-in-out 0ms");
-  // }, []);
-  // window.addEventListener("click", function () {
-  //   if (searchIsOpen) {
-  //     fbIcon.setAttribute("display", "block");
-  //     arrowLeftIcon.setAttribute("display", "none");
-  //     searchIcon.setAttribute("opacity", "1");
-  //     setSearchIsOpen(false);
-  //     return;
-  //   }
-  // });
-  // function handleSearchClick(e: React.MouseEvent) {
-  //   e.stopPropagation();
-  //   searchInputRef?.current?.focus();
-  //   arrowLeftIcon.setAttribute("display", "block");
-  //   fbIcon.setAttribute("display", "none");
-  //   searchIcon.setAttribute("opacity", "0");
-  //   setSearchIsOpen(true);
-  // }
-
+export const Navbar: React.FC = () => {
+  const [openDropdown, setOpenDropdown] = useState("");
   let index = -1;
+
+  //todo event listener for clicking somewhere else to close any dropdowns
   console.log(window.location.pathname);
   switch (window.location.pathname) {
     case "/Marketplace":
@@ -72,6 +47,15 @@ const Navbar: React.FC = () => {
   const NavIcons = document.getElementsByClassName("navbar-navicon");
   const myIcon = NavIcons[index];
   myIcon?.classList.add("navbar-navicon--active");
+
+  function clickDropdownOpen(dropdownName: string) {
+    if (dropdownName === openDropdown) {
+      setOpenDropdown("");
+    } else {
+      setOpenDropdown(dropdownName);
+    }
+  }
+
   function setEnabledNavIcon(e: { target: any }) {
     /* How it works:
     There is an array of svgs and an array of divs to enable them on click and disable all the others
@@ -147,19 +131,42 @@ const Navbar: React.FC = () => {
           <img src="https://images.ctfassets.net/23aumh6u8s0i/6uBzrqHNLlSAoER6HtgDN0/accd8f871b1de37f472b94da4346afa2/python-hero" />
           <p>George Fakidis</p>
         </div>
-        <div className="navmenu">
-          {/* text stuff here */}
-          <NavMenuOption tooltipText="Menu" Icon={TiThSmall} />
-          <NavMenuOption tooltipText="Messenger" Icon={FaFacebookMessenger} />
-          <NavMenuOption tooltipText="Notifications" Icon={FaBell} />
-          <NavMenuOption tooltipText="Account" Icon={FaCaretDown} />
-        </div>
+        <openDropdownContext.Provider value={openDropdown}>
+          <div className="navmenu">
+            {/* text stuff here */}
+            <NavMenuOption
+              tooltipText="Menu"
+              Icon={TiThSmall}
+              onClick={(e) => clickDropdownOpen("Menu")}
+              Dropdown={NotificationsDropdown}
+            />
+            <NavMenuOption
+              tooltipText="Messenger"
+              Icon={FaFacebookMessenger}
+              onClick={(e) => clickDropdownOpen("Messenger")}
+              Dropdown={NotificationsDropdown}
+            />
+            <NavMenuOption
+              tooltipText="Notifications"
+              Icon={FaBell}
+              onClick={(e) => clickDropdownOpen("Notifications")}
+              Dropdown={NotificationsDropdown}
+            />
+            <NavMenuOption
+              tooltipText="Account"
+              Icon={FaCaretDown}
+              onClick={(e) => clickDropdownOpen("Account")}
+              Dropdown={OptionsDropdown}
+            />
+          </div>
+        </openDropdownContext.Provider>
       </div>
     </div>
   );
 };
 
-export default Navbar;
+export const DropdownConsumer = openDropdownContext;
+
 interface Props {
   tooltip: string;
   Icon: React.FC;
