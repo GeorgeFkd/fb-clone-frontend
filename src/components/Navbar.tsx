@@ -18,12 +18,37 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import NotificationsDropdown from "./Dropdowns/NotificationsDropdown";
 import OptionsDropdown from "./Dropdowns/OptionsDropdown";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 const openDropdownContext = React.createContext("");
 
 export const Navbar: React.FC = () => {
   const [openDropdown, setOpenDropdown] = useState("");
+  const navmenu = useRef(null) as any;
   let index = -1;
+
+  function hideOnClickOutside(element: any) {
+    const outsideClickListener = (event: any) => {
+      if (element.contains(event.target) && isVisible(element)) {
+        // or use: event.target.closest(selector) === null
+        // element.style.display = "none";
+        console.log("set to no menus");
+        setOpenDropdown("");
+        removeClickListener();
+      }
+    };
+
+    const removeClickListener = () => {
+      document.removeEventListener("click", outsideClickListener);
+    };
+
+    document.addEventListener("click", outsideClickListener);
+  }
+
+  const isVisible = (elem: any) =>
+    !!elem &&
+    !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
 
   //todo event listener for clicking somewhere else to close any dropdowns
   console.log(window.location.pathname);
@@ -40,7 +65,17 @@ export const Navbar: React.FC = () => {
     default:
       break;
   }
+  useEffect(() => {
+    console.log("applied event listeners");
+    Array.from(navmenu.current?.childNodes).map((navMenuOption) => {
+      console.log(navMenuOption);
+      hideOnClickOutside(navMenuOption);
+      return navMenuOption;
+    });
+  }, []);
   const btns = document.getElementsByClassName("navbar-navicon__container");
+  // const navmenu = document.getElementsByClassName("navmenu")[0];
+
   let mybtn = btns.item(index);
 
   mybtn?.classList.add("navbar-navicon__container--active");
@@ -132,7 +167,7 @@ export const Navbar: React.FC = () => {
           <p>George Fakidis</p>
         </div>
         <openDropdownContext.Provider value={openDropdown}>
-          <div className="navmenu">
+          <div className="navmenu" ref={navmenu}>
             {/* text stuff here */}
             <NavMenuOption
               tooltipText="Menu"
