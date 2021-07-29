@@ -14,6 +14,7 @@ import { IconContext } from "react-icons/lib";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import UserGroupsDropdown from "./Dropdowns/UserGroupsDropdown";
 
 interface Props {
   onClose: () => void;
@@ -22,12 +23,34 @@ const NewPostModal: React.FC<Props> = ({ onClose }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const submitBtnRef = useRef<HTMLButtonElement>(null);
   const [postContent, setPostContent] = useState("");
-
+  const [groupSelected, setGroupSelected] = useState("");
+  const [IsGroupSelectionDropdownOpen, setIsGroupSelectionDropdownOpen] =
+    useState(false);
   function handleChange(e: any) {
     setPostContent(e.target.value);
   }
-  function submitPost() {
-    //todo save post to db request
+  async function submitPost() {
+    const data = {
+      content: postContent,
+      group_name: groupSelected,
+    };
+    const jwtToken = localStorage.getItem("user") as string;
+    console.log("my jwt", jwtToken);
+    const response = await fetch("http://localhost:4000/posts/new", {
+      method: "POST",
+      headers: {
+        Authorization: jwtToken,
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    console.log(response.status);
+    if (response.status === 201) {
+      console.log(response.statusText, "all ok");
+      setPostContent("");
+    } else {
+      console.log("failed to create post ");
+    }
   }
   function focusOnInput(e: any) {
     inputRef.current?.focus();
@@ -54,10 +77,19 @@ const NewPostModal: React.FC<Props> = ({ onClose }) => {
             {
               //todo add the tooltip}
             }
-            <div className="postmodal-main-selectgroup">
+
+            <div
+              className="postmodal-main-selectgroup"
+              onClick={(e) =>
+                setIsGroupSelectionDropdownOpen(!IsGroupSelectionDropdownOpen)
+              }
+            >
               <MdGroup className="postmodal-main-selectgroup-icon" />
-              <span>friends</span>
+              <span>{!!groupSelected ? groupSelected : "friends"}</span>
               <MdArrowDropDown className="postmodal-main-selectgroup-icon" />
+              {IsGroupSelectionDropdownOpen && (
+                <UserGroupsDropdown onSelect={setGroupSelected} />
+              )}
             </div>
           </div>
         </div>

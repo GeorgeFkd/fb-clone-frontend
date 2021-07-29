@@ -62,7 +62,8 @@
 
 .postmodal-main-selectgroup {
   display: flex;
-  height: 1.5rem;
+  /* height: 1.5rem; */
+  position: relative;
   padding: 0.25rem;
   align-items: center;
   background-color: gray;
@@ -147,4 +148,9 @@
 
 .postmodal-submit:hover {
   opacity: 1;
+}
+
+.postmodal-main-selectgroup-icon {
+  width: 1.2rem;
+  height: 1.2rem;
 }

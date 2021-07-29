@@ -8,36 +8,8 @@ import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
 import NewPostModal from "./NewPostModal";
 const CreatePost = () => {
-  const [postcontent, setPostcontent] = useState("");
-  const [openNewPostModal, setOpenNewPostModal] = useState(true);
-  async function savePostToDb(e: any) {
-    //this works but needs the group stuff
-    //todo get the id by the localstorage(+decryption)
-    const data = {
-      author_id: 4,
-      content: postcontent,
-      group_name: "emo goth grils",
-    };
-    console.log(postcontent);
-    const jwtToken = localStorage.getItem("user") as string;
-    console.log("my jwt", jwtToken);
-    const auth = "Authorization";
-    const response = await fetch("http://localhost:4000/posts/new", {
-      method: "POST",
-      headers: {
-        Authorization: jwtToken,
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    console.log(response.status);
-    if (response.status === 201) {
-      console.log(response.statusText, "all ok");
-      setPostcontent("");
-    } else {
-      console.log("failed to create post ");
-    }
-  }
+  const [openNewPostModal, setOpenNewPostModal] = useState(false);
+
   return (
     <div className="createpost-container">
       <div className="createpost-textpost">
@@ -51,10 +23,7 @@ const CreatePost = () => {
             onClick={(e) => setOpenNewPostModal(true)}
             placeholder="what is on your mind?"
             className="createpost-input"
-            value={postcontent}
-            onChange={(e) => setPostcontent(e.target.value)}
           />
-          <FiUpload className="createpost-icon" onClick={savePostToDb} />
         </div>
       </div>
       <div className="createpost-divider"></div>
