@@ -1,0 +1,150 @@
+.postmodal-container-wrap {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.postmodal-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  background-color: #565657;
+  gap: 0.5rem;
+  width: 550px;
+  height: 400px;
+  padding: 1rem;
+  border: 2px solid blue;
+  border-radius: 1rem;
+}
+
+.postmodal-title-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.postmodal-title {
+  margin-left: auto;
+}
+
+.postmodal-title-icon {
+  margin-left: auto;
+  background-color: cyan;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.postmodal-title-icon:hover {
+  background-color: darkgreen;
+}
+
+.postmodal-main-header {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.postmodal-main-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.postmodal-main-selectgroup {
+  display: flex;
+  height: 1.5rem;
+  padding: 0.25rem;
+  align-items: center;
+  background-color: gray;
+  border-radius: 0.25rem;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.postmodal-main-inputarea {
+  height: 8rem;
+  /* this height hits just right */
+}
+
+.postmodal-main-input {
+  outline: none;
+  border: none;
+  caret-color: white;
+  background-color: transparent;
+  line-height: 2rem;
+  font-size: 2rem;
+  color: white;
+}
+
+.postmodal-main-input:focus::placeholder {
+  color: gray;
+}
+
+.postmodal-main-input::placeholder {
+  color: #a2a4a8;
+}
+
+.postmodal-addextra {
+  display: flex;
+  padding: 1rem 0.5rem;
+  align-items: center;
+  border: 2px solid gray;
+  border-radius: 0.5rem;
+}
+
+.postmodal-addextra-prompt {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.postmodal-addextra-icons {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+  align-items: center;
+}
+
+.postmodal-addextra-icon {
+  height: 2rem;
+  width: 2rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.postmodal-addextra-icon:hover {
+  background-color: pink;
+}
+
+.postmodal-submit {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  opacity: 0.5;
+  transition: opacity 200ms ease-in-out;
+  background-color: darkslategrey;
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.postmodal-submit:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.postmodal-submit:hover {
+  opacity: 1;
+}

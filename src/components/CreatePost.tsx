@@ -6,9 +6,10 @@ import { HiOutlinePhotograph } from "react-icons/hi";
 import { CgSmileMouthOpen } from "react-icons/cg";
 import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
+import NewPostModal from "./NewPostModal";
 const CreatePost = () => {
   const [postcontent, setPostcontent] = useState("");
-
+  const [openNewPostModal, setOpenNewPostModal] = useState(true);
   async function savePostToDb(e: any) {
     //this works but needs the group stuff
     //todo get the id by the localstorage(+decryption)
@@ -47,6 +48,7 @@ const CreatePost = () => {
         />
         <div className="createpost-input-wrap">
           <input
+            onClick={(e) => setOpenNewPostModal(true)}
             placeholder="what is on your mind?"
             className="createpost-input"
             value={postcontent}
@@ -74,6 +76,9 @@ const CreatePost = () => {
           iconColor="yellow"
         />
       </div>
+      {openNewPostModal && (
+        <NewPostModal onClose={() => setOpenNewPostModal(!openNewPostModal)} />
+      )}
     </div>
   );
 };

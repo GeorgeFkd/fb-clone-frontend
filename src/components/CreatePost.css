@@ -28,6 +28,7 @@
   width: inherit;
   height: inherit;
   font-size: 1.5rem;
+  text-indent: 0.5rem;
 }
 
 .createpost-input-wrap {

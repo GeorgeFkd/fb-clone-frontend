@@ -4,6 +4,7 @@ import { BiLike, BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import { useState } from "react";
 import CommentSection from "./CommentSection";
+import NewPostModal from "./NewPostModal";
 const PostControls = () => {
   const [openCommentSection, setOpenCommentSection] = useState(false);
   return (
