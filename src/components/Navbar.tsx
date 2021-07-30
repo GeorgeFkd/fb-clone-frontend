@@ -20,12 +20,20 @@ import NotificationsDropdown from "./Dropdowns/NotificationsDropdown";
 import OptionsDropdown from "./Dropdowns/OptionsDropdown";
 import { useEffect } from "react";
 import { useRef } from "react";
+import SearchDropdown from "./Dropdowns/SearchDropdown";
 
 const openDropdownContext = React.createContext("");
 
 export const Navbar: React.FC = () => {
   const [openDropdown, setOpenDropdown] = useState("");
   const navmenu = useRef(null) as any;
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [groupsToSearch, setGroupsToSearch] = useState<any[]>([]);
+  const [searchInputIsFocused, setSearchInputIsFocused] = useState(false);
+  function handleChange(e: React.FormEvent<HTMLInputElement>) {
+    setSearchTerm(e.currentTarget.value);
+  }
   let index = -1;
 
   function hideOnClickOutside(element: any) {
@@ -65,14 +73,46 @@ export const Navbar: React.FC = () => {
     default:
       break;
   }
+
+  async function requestAvailableGroups() {
+    // works
+    const response = await fetch("http://localhost:4000/groups");
+    const data = await response.json();
+    console.log("the available groups", data);
+    //todo request in the useEffect hook
+    return data.groups;
+  }
+  // requestAvailableGroups();
   useEffect(() => {
     console.log("applied event listeners");
     Array.from(navmenu.current?.childNodes).map((navMenuOption) => {
       console.log(navMenuOption);
       hideOnClickOutside(navMenuOption);
       return navMenuOption;
-    });
+    }, []);
+
+    async function fetchFromApiAndUpdateState() {
+      let groups = await requestAvailableGroups();
+      setGroupsToSearch(groups);
+    }
+    fetchFromApiAndUpdateState();
   }, []);
+
+  useEffect(() => {
+    async function fetchFromApiAndUpdateState() {
+      let groups = await requestAvailableGroups();
+      console.log(groups, "db groups");
+      setGroupsToSearch(
+        groups.filter((group: { group_id: number; name: string }) =>
+          group.name.includes(searchTerm)
+        )
+      );
+      console.log(groupsToSearch);
+    }
+    fetchFromApiAndUpdateState();
+
+    console.log(groupsToSearch, "groups");
+  }, [searchTerm]);
   const btns = document.getElementsByClassName("navbar-navicon__container");
   // const navmenu = document.getElementsByClassName("navmenu")[0];
 
@@ -149,8 +189,15 @@ export const Navbar: React.FC = () => {
           <input
             placeholder="Search Facebook"
             className="search-input"
-            // ref={searchInputRef}
+            value={searchTerm}
+            onChange={handleChange}
+            onFocus={(e) => setSearchInputIsFocused(true)}
+            onBlur={(e) => setSearchInputIsFocused(false)}
           />
+          {console.log(document.activeElement)}
+          {searchTerm && searchInputIsFocused && (
+            <SearchDropdown groups={groupsToSearch} />
+          )}
         </div>
       </div>
       {/* extract to component */}

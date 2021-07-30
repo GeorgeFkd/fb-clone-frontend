@@ -2,6 +2,7 @@ import React from "react";
 import "./UserGroupsDropdown.css";
 interface Props {
   onSelect: any;
+  availableGroups?: Array<any>;
 }
 
 const userGroups = ["emo goth grils", "sigma chads", "friends", "public"];
