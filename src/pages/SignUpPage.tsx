@@ -3,6 +3,7 @@ import "./LoginPage.css";
 import { Link, useHistory } from "react-router-dom";
 import { useState } from "react";
 import { FiLogIn } from "react-icons/fi";
+import { RegisterUser, LoginUser } from "../components/utils/db.requests";
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -15,28 +16,20 @@ const SignUpPage = () => {
     return result;
   }
   async function handleSignup(e: any) {
-    console.log(validationCheck());
-    if (validationCheck()) return informUserForInvalidInput();
+    // console.log(validationCheck());
+    // if (validationCheck()) return informUserForInvalidInput();
     const credentials = { email, password, name };
     console.log(credentials);
-    const response = await fetch("http://localhost:4000/users/register", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    });
-    const data = await response.json();
-    console.log(`data from an api ${data}`);
-    //! dont forget to encrypt the id
-    if (response.status === 200) {
-      //successfull register
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ name: "geon", _id: "12345" })
-      );
-      console.log("you made it ");
-      history.push("/");
+    const result = await RegisterUser(credentials);
+    if (result) {
+      const loginIsSuccessful = await LoginUser({ email, password });
+      if (loginIsSuccessful) {
+        history.push("/");
+      } else {
+        console.log("unsuccessfull");
+      }
+    } else {
+      //todo message to user
     }
   }
 

@@ -3,6 +3,7 @@ import "./LoginPage.css";
 import { Link, useHistory } from "react-router-dom";
 import { FiLogIn } from "react-icons/fi";
 import { useState } from "react";
+import { LoginUser } from "../components/utils/db.requests";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,27 +15,14 @@ const LoginPage = () => {
     return result;
   }
   async function handleLogin(e: any) {
-    let data, response;
     if (validationCheck()) return informUserForInvalidInput();
-    try {
-      response = await fetch("http://localhost:4000/users/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      data = await response.json();
-    } catch (err) {
-      console.error(err);
-    }
 
-    //! i have to somehow encrypt the id
-    if (response?.status === 201) {
-      console.log("Successfull login");
-      localStorage.setItem("user", data.token);
+    const result = await LoginUser({ email, password });
 
+    if (result) {
       history.push("/");
+    } else {
+      //todo message to user
     }
   }
 

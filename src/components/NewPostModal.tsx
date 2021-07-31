@@ -15,6 +15,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import UserGroupsDropdown from "./Dropdowns/UserGroupsDropdown";
+import { createNewPost } from "./utils/db.requests";
 
 interface Props {
   onClose: () => void;
@@ -30,26 +31,16 @@ const NewPostModal: React.FC<Props> = ({ onClose }) => {
     setPostContent(e.target.value);
   }
   async function submitPost() {
+    //works
     const data = {
       content: postContent,
       group_name: groupSelected,
     };
-    const jwtToken = localStorage.getItem("user") as string;
-    console.log("my jwt", jwtToken);
-    const response = await fetch("http://localhost:4000/posts/new", {
-      method: "POST",
-      headers: {
-        Authorization: jwtToken,
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    console.log(response.status);
-    if (response.status === 201) {
-      console.log(response.statusText, "all ok");
+    const creatingPostIsSuccessful = await createNewPost(data);
+    if (creatingPostIsSuccessful) {
       setPostContent("");
     } else {
-      console.log("failed to create post ");
+      //todo notify user
     }
   }
   function focusOnInput(e: any) {

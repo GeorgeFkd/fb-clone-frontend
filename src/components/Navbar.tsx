@@ -21,7 +21,7 @@ import OptionsDropdown from "./Dropdowns/OptionsDropdown";
 import { useEffect } from "react";
 import { useRef } from "react";
 import SearchDropdown from "./Dropdowns/SearchDropdown";
-
+import { requestAvailableGroups } from "../components/utils/db.requests";
 const openDropdownContext = React.createContext("");
 
 export const Navbar: React.FC = () => {
@@ -74,14 +74,6 @@ export const Navbar: React.FC = () => {
       break;
   }
 
-  async function requestAvailableGroups() {
-    // works
-    const response = await fetch("http://localhost:4000/groups");
-    const data = await response.json();
-    console.log("the available groups", data);
-    //todo request in the useEffect hook
-    return data.groups;
-  }
   // requestAvailableGroups();
   useEffect(() => {
     console.log("applied event listeners");

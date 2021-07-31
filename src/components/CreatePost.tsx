@@ -16,7 +16,7 @@ const CreatePost = () => {
         <img
           className="createpost-avatar"
           src="https://st4.depositphotos.com/12982378/23038/i/600/depositphotos_230382864-stock-photo-high-angle-view-attractive-smiling.jpg"
-          alt=""
+          alt="user's profile picture"
         />
         <div className="createpost-input-wrap">
           <input
