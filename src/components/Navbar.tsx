@@ -36,28 +36,6 @@ export const Navbar: React.FC = () => {
   }
   let index = -1;
 
-  function hideOnClickOutside(element: any) {
-    const outsideClickListener = (event: any) => {
-      if (element.contains(event.target) && isVisible(element)) {
-        // or use: event.target.closest(selector) === null
-        // element.style.display = "none";
-        console.log("set to no menus");
-        setOpenDropdown("");
-        removeClickListener();
-      }
-    };
-
-    const removeClickListener = () => {
-      document.removeEventListener("click", outsideClickListener);
-    };
-
-    document.addEventListener("click", outsideClickListener);
-  }
-
-  const isVisible = (elem: any) =>
-    !!elem &&
-    !!(elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
-
   //todo event listener for clicking somewhere else to close any dropdowns
   console.log(window.location.pathname);
   switch (window.location.pathname) {
@@ -74,14 +52,8 @@ export const Navbar: React.FC = () => {
       break;
   }
 
-  // requestAvailableGroups();
   useEffect(() => {
     console.log("applied event listeners");
-    Array.from(navmenu.current?.childNodes).map((navMenuOption) => {
-      console.log(navMenuOption);
-      hideOnClickOutside(navMenuOption);
-      return navMenuOption;
-    }, []);
 
     async function fetchFromApiAndUpdateState() {
       let groups = await requestAvailableGroups();

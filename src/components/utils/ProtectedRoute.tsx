@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
 interface Props {
-  isAuth: boolean;
+  isAuth: () => boolean;
   component: React.FC;
 }
 
@@ -15,7 +15,7 @@ const ProtectedRoute: React.FC<Props> = ({
     <Route
       {...rest}
       render={(props) => {
-        if (isAuth) {
+        if (isAuth()) {
           return <Component />;
         } else {
           return (
