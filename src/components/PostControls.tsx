@@ -4,13 +4,14 @@ import { BiLike, BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import { useState } from "react";
 import CommentSection from "./CommentSection";
-import NewPostModal from "./NewPostModal";
 const PostControls = () => {
   const [openCommentSection, setOpenCommentSection] = useState(false);
   return (
     <div className="postcontrols-container">
       {/* this will need some work to be proper */}
-      <div className="postcontrols-details">like</div>
+      <div className="postcontrols-details">
+        here will go the reaction stuff
+      </div>
       <div className="postcontrols-buttons-container">
         <div className="postcontrols-button row">
           <BiLike className="postcontrols-button-icon" />

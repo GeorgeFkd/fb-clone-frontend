@@ -1,3 +1,138 @@
 .newgroupmodal-container {
-  width: 400px;
+  width: 600px;
+  border: 2px solid brown;
+  border-radius: 0.5rem;
+  background-color: crimson;
+}
+
+.groupmodal-title-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.groupmodal-title {
+  margin-left: auto;
+}
+
+.groupmodal-title-icon {
+  margin-left: auto;
+  background-color: cyan;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.groupmodal-title-icon:hover {
+  background-color: darkgreen;
+}
+
+.groupmodal-main-header {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.groupmodal-main-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.groupmodal-main-selectgroup {
+  display: flex;
+  /* height: 1.5rem; */
+  position: relative;
+  padding: 0.25rem;
+  align-items: center;
+  background-color: gray;
+  border-radius: 0.25rem;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.groupmodal-main-inputarea {
+  height: 8rem;
+  /* this height hits just right */
+}
+
+.groupmodal-main-input {
+  outline: none;
+  border: none;
+  caret-color: white;
+  background-color: transparent;
+  line-height: 2rem;
+  font-size: 2rem;
+  color: white;
+  width: 100%;
+}
+
+.groupmodal-main-input:focus::placeholder {
+  color: gray;
+}
+
+.groupmodal-main-input::placeholder {
+  color: #a2a4a8;
+}
+
+.groupmodal-addextra {
+  display: flex;
+  padding: 1rem 0.5rem;
+  align-items: center;
+  border: 2px solid gray;
+  border-radius: 0.5rem;
+}
+
+.groupmodal-addextra-prompt {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.groupmodal-addextra-icons {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+  align-items: center;
+}
+
+.groupmodal-addextra-icon {
+  height: 2rem;
+  width: 2rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.groupmodal-addextra-icon:hover {
+  background-color: pink;
+}
+
+.groupmodal-submit {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  opacity: 0.75;
+  transition: opacity 200ms ease-in-out;
+  background-color: darkslategrey;
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  width: 100%;
+}
+
+.groupmodal-submit:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+.groupmodal-submit:hover {
+  opacity: 1;
+}
+
+.groupmodal-main-selectgroup-icon {
+  width: 1.2rem;
+  height: 1.2rem;
 }

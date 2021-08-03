@@ -1,18 +1,10 @@
 import React from "react";
-import {
-  MdArrowDropDown,
-  MdCamera,
-  MdGif,
-  MdPhoto,
-  MdTagFaces,
-} from "react-icons/md";
-import { IoMdCamera } from "react-icons/io";
+import { MdArrowDropDown } from "react-icons/md";
 import "./CommentSection.css";
-import Avatar from "./utils/Avatar";
-import { IconContext } from "react-icons/lib";
 import { useEffect } from "react";
 import { useRef } from "react";
 import Comment from "./Comment";
+import CommentInput from "./CommentInput";
 const CommentSection = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -43,37 +35,7 @@ const CommentSection = () => {
         <MdArrowDropDown className="commentsection-toprow-icon" />
       </div>
       {/* extract to component to use for reply */}
-      <div className="commentsection-newcomment">
-        <Avatar
-          src={
-            "https://i.pinimg.com/originals/a5/41/02/a541024b0989ea9b0bd470fcfc89dcb1.jpg"
-          }
-          size={2.5}
-        />
-        <div className="commentsection-newcomment-inputbox">
-          <input
-            placeholder="write your comment here"
-            className="commentsection-newcomment-input"
-            ref={inputRef}
-          />
-          <div className="commentsection-newcomment-extraoptions">
-            <IconContext.Provider
-              value={{
-                color: "blue",
-                className: "commentsection-newcomment-allicons",
-              }}
-            >
-              {
-                //todo add tooltips to the icons
-              }
-              <MdTagFaces />
-              <IoMdCamera />
-              <MdGif />
-              <MdPhoto />
-            </IconContext.Provider>
-          </div>
-        </div>
-      </div>
+      <CommentInput />
       <Comment />
       <Comment />
     </div>

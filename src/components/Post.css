@@ -3,4 +3,5 @@
   flex-direction: column;
   background-color: var(--global-primaryLight);
   padding: 1rem;
+  border-radius: 0.5rem;
 }
