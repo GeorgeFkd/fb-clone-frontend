@@ -8,7 +8,7 @@ import Avatar from "./utils/Avatar";
 import { CreateGroup } from "./utils/db.requests";
 
 interface Props {
-  onClose: any;
+  onClose: () => void; //sets state properly to close it
 }
 const NewGroupModal: React.FC<Props> = ({ onClose }) => {
   const submitBtnRef = useRef<HTMLButtonElement>(null);

@@ -5,7 +5,14 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import Comment from "./Comment";
 import CommentInput from "./CommentInput";
-const CommentSection = () => {
+import { useState } from "react";
+
+interface Props {
+  post_id: number;
+}
+
+const CommentSection: React.FC<Props> = () => {
+  const [comments, setComments] = useState([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const submitComment = function (comment: string | undefined, postId: number) {
@@ -36,8 +43,11 @@ const CommentSection = () => {
       </div>
       {/* extract to component to use for reply */}
       <CommentInput />
-      <Comment />
-      <Comment />
+      {comments.map((comment) => {
+        return <Comment {...comment} />;
+      })}
+      {/* <Comment />
+      <Comment /> */}
     </div>
   );
 };

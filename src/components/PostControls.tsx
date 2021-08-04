@@ -4,7 +4,12 @@ import { BiLike, BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import { useState } from "react";
 import CommentSection from "./CommentSection";
-const PostControls = () => {
+
+interface Props {
+  post_id: number;
+}
+
+const PostControls: React.FC<Props> = ({ post_id }) => {
   const [openCommentSection, setOpenCommentSection] = useState(false);
   return (
     <div className="postcontrols-container">
@@ -30,7 +35,7 @@ const PostControls = () => {
         </div>
       </div>
 
-      {openCommentSection && <CommentSection />}
+      {openCommentSection && <CommentSection post_id={post_id} />}
     </div>
   );
 };

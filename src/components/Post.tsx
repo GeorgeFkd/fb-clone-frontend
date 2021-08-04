@@ -35,7 +35,7 @@ const Post: React.FC<PostType> = ({
         laboriosam sit sapiente. Obcaecati? */}
         {content}
       </p>
-      <PostControls />
+      <PostControls post_id={post_id} />
     </div>
   );
 };

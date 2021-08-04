@@ -1,6 +1,6 @@
 import React from "react";
 import CreatePost from "./CreatePost";
-import CreateGroop from "./CreateGroup";
+import CreateGroup from "./CreateGroup";
 import "./MainFeed.css";
 import PostFeed from "./PostFeed";
 import StoryFeed from "./StoryFeed";
@@ -22,7 +22,7 @@ const MainFeed = () => {
       <StoryFeed />
       <CreatePost />
       {/* lol */}
-      <CreateGroop />
+      <CreateGroup />
       <button onClick={(e) => dbRequest()}>Db Request</button>
       <PostFeed />
     </div>
