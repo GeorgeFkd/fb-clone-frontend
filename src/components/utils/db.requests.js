@@ -1,21 +1,18 @@
 //returns bool for success/failure
-const serverBaseUrl = process.env.BACKEND_BASE_URL || "http:localhost:4000";
+const SERVERBASEURL = process.env.BACKEND_BASE_URL || "http://localhost:4000";
 export async function PostNewComment(post_id, commentContent, replies_to) {
   const jwtToken = localStorage.getItem("user");
-  const response = await fetch(
-    `http:localhost:4000/posts/${post_id}/newcomment`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: jwtToken,
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        content: commentContent,
-        replies_to: replies_to || null,
-      }),
-    }
-  );
+  const response = await fetch(SERVERBASEURL + `/posts/${post_id}/newcomment`, {
+    method: "POST",
+    headers: {
+      Authorization: jwtToken,
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({
+      content: commentContent,
+      replies_to: replies_to || null,
+    }),
+  });
   const result = await response.json();
   console.log(result);
 
@@ -29,9 +26,7 @@ export async function PostNewComment(post_id, commentContent, replies_to) {
 }
 
 export async function GetPostsOfGroup(group_id) {
-  const response = await fetch(
-    `http://localhost:4000/groups/${group_id}/posts`
-  );
+  const response = await fetch(SERVERBASEURL + `/groups/${group_id}/posts`);
   const data = await response.json();
   const allPostsOfGroup = data.posts;
   console.log(allPostsOfGroup);
@@ -43,7 +38,7 @@ export async function GetGroupsOfCurrentUser() {
   let data, response;
   const jwtToken = localStorage.getItem("user");
   try {
-    response = await fetch(`http://localhost:4000/users/me/groups`, {
+    response = await fetch(SERVERBASEURL + `/users/me/groups`, {
       method: "GET",
       headers: {
         Authorization: jwtToken,
@@ -67,7 +62,7 @@ export async function GetGroupsOfUser(userID) {
 export async function LoginUser(loginUserObject) {
   let data, response;
   try {
-    response = await fetch("http://localhost:4000/users/login", {
+    response = await fetch(SERVERBASEURL + "/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,7 +84,7 @@ export async function LoginUser(loginUserObject) {
 
 export async function CreateGroup(groupName) {
   const jwtToken = localStorage.getItem("user");
-  const response = await fetch("http://localhost:4000/groups", {
+  const response = await fetch(SERVERBASEURL + "/groups", {
     method: "POST",
     headers: {
       Authorization: jwtToken,
@@ -110,7 +105,7 @@ export async function CreateGroup(groupName) {
 
 export async function RegisterUser(credentials) {
   console.log(credentials);
-  const response = await fetch("http://localhost:4000/users/register", {
+  const response = await fetch(SERVERBASEURL + "/users/register", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -135,7 +130,7 @@ export async function RegisterUser(credentials) {
 
 export async function requestAvailableGroups() {
   // works
-  const response = await fetch("http://localhost:4000/groups");
+  const response = await fetch(SERVERBASEURL + "/groups");
   const data = await response.json();
   console.log("the available groups", data);
   //todo request in the useEffect hook
@@ -145,7 +140,7 @@ export async function requestAvailableGroups() {
 export async function createNewPost(postData) {
   const jwtToken = localStorage.getItem("user");
   console.log("my jwt", jwtToken);
-  const response = await fetch("http://localhost:4000/posts/", {
+  const response = await fetch(SERVERBASEURL + "/posts/", {
     method: "POST",
     headers: {
       Authorization: jwtToken,
@@ -167,7 +162,7 @@ export async function getCurrentUserFriends() {
   //works but i gotta filter out the user himself somehow
   const jwtToken = localStorage.getItem("user");
 
-  const response = await fetch("http://localhost:4000/users/me/friends", {
+  const response = await fetch(SERVERBASEURL + "/users/me/friends", {
     method: "GET",
     headers: {
       Authorization: jwtToken,
