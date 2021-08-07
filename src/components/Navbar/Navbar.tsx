@@ -10,18 +10,18 @@ import {
 } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { MdTv, MdStoreMallDirectory } from "react-icons/md";
-import NavMenuOption from "./NavMenuOption";
+import NavMenuOption from "../NavMenuOption/NavMenuOption";
 import { CgScreen } from "react-icons/cg";
 import { TiThSmall } from "react-icons/ti";
 
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import NotificationsDropdown from "./Dropdowns/NotificationsDropdown";
-import OptionsDropdown from "./Dropdowns/OptionsDropdown";
+import NotificationsDropdown from "../Dropdowns/NotificationsDropdown";
+import OptionsDropdown from "../Dropdowns/OptionsDropdown";
 import { useEffect } from "react";
 import { useRef } from "react";
-import SearchDropdown from "./Dropdowns/SearchDropdown";
-import { requestAvailableGroups } from "../components/utils/db.requests";
+import SearchDropdown from "../Dropdowns/SearchDropdown";
+import { requestAvailableGroups } from "../utils/db.requests";
 const openDropdownContext = React.createContext("");
 
 export const Navbar: React.FC = () => {

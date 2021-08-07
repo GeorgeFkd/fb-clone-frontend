@@ -1,7 +1,7 @@
 import React from "react";
 import { MdMoreHoriz } from "react-icons/md";
 import "./Comment.css";
-import Avatar from "./utils/Avatar";
+import Avatar from "../utils/Avatar";
 interface Props {
   authorName: string;
   createdAt: string;

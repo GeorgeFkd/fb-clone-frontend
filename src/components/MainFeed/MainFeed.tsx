@@ -1,11 +1,11 @@
 import React from "react";
-import CreatePost from "./CreatePost";
-import CreateGroup from "./CreateGroup";
+import CreatePost from "../CreatePost/CreatePost";
+import CreateGroup from "../CreateGroup/CreateGroup";
 import "./MainFeed.css";
-import PostFeed from "./PostFeed";
-import StoryFeed from "./StoryFeed";
+import PostFeed from "../PostFeed/PostFeed";
+import StoryFeed from "../StoryFeed/StoryFeed";
 import { useState } from "react";
-import { getCurrentUserFriends } from "./utils/db.requests";
+import { getCurrentUserFriends } from "../utils/db.requests";
 
 const MainFeed = () => {
   const [open, setOpen] = useState(false);

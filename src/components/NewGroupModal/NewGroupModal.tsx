@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { useRef } from "react";
 import { ImCross } from "react-icons/im";
 import "./NewGroupModal.css";
-import Avatar from "./utils/Avatar";
-import { CreateGroup } from "./utils/db.requests";
+import Avatar from "../utils/Avatar";
+import { CreateGroup } from "../utils/db.requests";
 
 interface Props {
   onClose: () => void; //sets state properly to close it

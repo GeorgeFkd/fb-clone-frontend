@@ -3,8 +3,8 @@ import { MdArrowDropDown } from "react-icons/md";
 import "./CommentSection.css";
 import { useEffect } from "react";
 import { useRef } from "react";
-import Comment from "./Comment";
-import CommentInput from "./CommentInput";
+import Comment from "../Comment/Comment";
+import CommentInput from "../CommentInput/CommentInput";
 import { useState } from "react";
 
 interface Props {

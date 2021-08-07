@@ -3,10 +3,10 @@ import { useRef } from "react";
 import { IoMdCamera } from "react-icons/io";
 import { IconContext } from "react-icons/lib";
 import { MdGif, MdPhoto, MdTagFaces } from "react-icons/md";
-import Avatar from "./utils/Avatar";
+import Avatar from "../utils/Avatar";
 import "./CommentInput.css";
 import { useState } from "react";
-import { PostNewComment } from "./utils/db.requests";
+import { PostNewComment } from "../utils/db.requests";
 
 interface Props {
   post_id: number;

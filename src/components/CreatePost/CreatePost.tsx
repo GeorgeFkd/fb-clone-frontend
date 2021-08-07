@@ -1,12 +1,12 @@
 import React from "react";
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import "./CreatePost.css";
-import CreatePostOption from "./CreatePostOption";
+import CreatePostOption from "../CreatePostOption/CreatePostOption";
 import { HiOutlinePhotograph } from "react-icons/hi";
 import { CgSmileMouthOpen } from "react-icons/cg";
 import { useState } from "react";
 import { FiUpload } from "react-icons/fi";
-import NewPostModal from "./NewPostModal";
+import NewPostModal from "../NewPostModal/NewPostModal";
 const CreatePost = () => {
   const [openNewPostModal, setOpenNewPostModal] = useState(false);
 

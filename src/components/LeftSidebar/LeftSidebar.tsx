@@ -76,7 +76,7 @@ const LeftSideBar = () => {
           );
         })}
       </div>
-      {/* for some reason with a tags it seems weird */}
+      {/* for some reason with <a> tags it seems weird */}
       <div className="leftbar-details">
         {detailsText.map((detail) => (
           <p>&middot; {detail} &#160;</p>

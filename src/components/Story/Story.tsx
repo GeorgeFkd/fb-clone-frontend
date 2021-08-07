@@ -1,6 +1,6 @@
 import React from "react";
 import "./Story.css";
-import Avatar from "./utils/Avatar";
+import Avatar from "../utils/Avatar";
 interface Props {
   avatarImg: string;
   contentImg: string;

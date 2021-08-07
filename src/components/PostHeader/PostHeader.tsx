@@ -1,6 +1,6 @@
 import React from "react";
 import "./PostHeader.css";
-import Avatar from "./utils/Avatar";
+import Avatar from "../utils/Avatar";
 import { BiRightArrow, BiDotsHorizontalRounded } from "react-icons/bi";
 interface Props {
   authorName: string;

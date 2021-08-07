@@ -1,7 +1,7 @@
 import React from "react";
 import { IconContext } from "react-icons/lib";
 import "./NavMenuOption.css";
-import { DropdownConsumer } from "./Navbar";
+import { DropdownConsumer } from "../Navbar/Navbar";
 interface Props {
   //todo implement the open close stuff the old way and add dropdowns
   // any bcs icons are from different libs

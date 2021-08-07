@@ -1,8 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import Post from "./Post";
-import { GetGroupsOfCurrentUser, GetPostsOfGroup } from "./utils/db.requests";
+import Post from "../Post/Post";
+import { GetGroupsOfCurrentUser, GetPostsOfGroup } from "../utils/db.requests";
 import "./PostFeed.css";
 interface PostType {
   //change to:
@@ -24,7 +24,7 @@ const PostFeed: React.FC = () => {
       const userGroups = result.groups;
 
       const allPosts: PostType[] = [];
-      userGroups.map(async (group: any) => {
+      const arr = userGroups.map(async (group: any) => {
         const { group_id } = group;
         // this might need some change like [{groupid:number,posts:PostType[]}]
         let postsOfGroup = await GetPostsOfGroup(group_id);
@@ -32,6 +32,7 @@ const PostFeed: React.FC = () => {
           post.group_id = group_id;
         });
         allPosts.push(...postsOfGroup);
+        return [...postsOfGroup];
       });
       console.log(allPosts, "inside fetch");
       // setIsLoading(false);

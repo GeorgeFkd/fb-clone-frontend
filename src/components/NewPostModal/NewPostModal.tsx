@@ -1,7 +1,7 @@
 import React from "react";
 import "./NewPostModal.css";
 import { ImCross } from "react-icons/im";
-import Avatar from "./utils/Avatar";
+import Avatar from "../utils/Avatar";
 import {
   MdGroup,
   MdArrowDropDown,
@@ -14,8 +14,8 @@ import { IconContext } from "react-icons/lib";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import UserGroupsDropdown from "./Dropdowns/UserGroupsDropdown";
-import { createNewPost } from "./utils/db.requests";
+import UserGroupsDropdown from "../Dropdowns/UserGroupsDropdown";
+import { createNewPost } from "../utils/db.requests";
 
 interface Props {
   onClose: () => void;

@@ -3,7 +3,7 @@ import "./CreateGroup.css";
 
 import { BiVideoPlus } from "react-icons/bi";
 import { useState } from "react";
-import NewGroupModal from "./NewGroupModal";
+import NewGroupModal from "../NewGroupModal/NewGroupModal";
 const CreateRoom = () => {
   const [openGroupModal, setOpenGroupModal] = useState(false);
   return (

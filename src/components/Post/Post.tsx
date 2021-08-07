@@ -1,7 +1,7 @@
 import React from "react";
-import PostHeader from "./PostHeader";
+import PostHeader from "../PostHeader/PostHeader";
 import "./Post.css";
-import PostControls from "./PostControls";
+import PostControls from "../PostControls/PostControls";
 interface PostType {
   //change to:
   name: string; //authorName

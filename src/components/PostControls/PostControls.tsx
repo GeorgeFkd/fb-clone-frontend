@@ -3,7 +3,7 @@ import "./PostControls.css";
 import { BiLike, BiComment } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import { useState } from "react";
-import CommentSection from "./CommentSection";
+import CommentSection from "../CommentSection/CommentSection";
 
 interface Props {
   post_id: number;
