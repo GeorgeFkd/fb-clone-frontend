@@ -9,7 +9,7 @@ interface Props {}
 const NotificationsDropdown: React.FC<Props> = () => {
   //todo fix scroll issue
   return (
-    <div className="notifications-dropdown">
+    <div className="notifications-dropdown" data-testid="NotificationsDropdown">
       <div className="notifications-dropdown-title-container">
         <h1
           className="notifications-dropdown-title"

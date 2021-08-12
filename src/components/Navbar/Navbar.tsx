@@ -1,33 +1,15 @@
 import React from "react";
 import "./Navbar.css";
-import {
-  FaSearch,
-  FaFacebook,
-  FaHome,
-  FaFacebookMessenger,
-  FaBell,
-  FaCaretDown,
-} from "react-icons/fa";
+import { FaSearch, FaFacebook, FaHome } from "react-icons/fa";
 import { IconContext } from "react-icons";
-import { MdTv, MdStoreMallDirectory } from "react-icons/md";
-import NavMenuOption from "../NavMenuOption/NavMenuOption";
+import { MdStoreMallDirectory } from "react-icons/md";
 import { CgScreen } from "react-icons/cg";
-import { TiThSmall } from "react-icons/ti";
-
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import NotificationsDropdown from "../Dropdowns/NotificationsDropdown";
-import OptionsDropdown from "../Dropdowns/OptionsDropdown";
-import { useEffect } from "react";
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 import SearchDropdown from "../Dropdowns/SearchDropdown";
 import { requestAvailableGroups } from "../utils/db.requests";
-const openDropdownContext = React.createContext("");
-
+import NavMenu from "./NavMenu/NavMenu";
 export const Navbar: React.FC = () => {
-  const [openDropdown, setOpenDropdown] = useState("");
-  const navmenu = useRef(null) as any;
-  const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [groupsToSearch, setGroupsToSearch] = useState<any[]>([]);
   const [searchInputIsFocused, setSearchInputIsFocused] = useState(false);
@@ -77,23 +59,14 @@ export const Navbar: React.FC = () => {
 
     console.log(groupsToSearch, "groups");
   }, [searchTerm]);
+
   const btns = document.getElementsByClassName("navbar-navicon__container");
-  // const navmenu = document.getElementsByClassName("navmenu")[0];
-
   let mybtn = btns.item(index);
-
   mybtn?.classList.add("navbar-navicon__container--active");
+
   const NavIcons = document.getElementsByClassName("navbar-navicon");
   const myIcon = NavIcons[index];
   myIcon?.classList.add("navbar-navicon--active");
-
-  function clickDropdownOpen(dropdownName: string) {
-    if (dropdownName === openDropdown) {
-      setOpenDropdown("");
-    } else {
-      setOpenDropdown(dropdownName);
-    }
-  }
 
   function setEnabledNavIcon(e: { target: any }) {
     /* How it works:
@@ -108,7 +81,6 @@ export const Navbar: React.FC = () => {
       document.getElementsByClassName("navbar-navicon")
     );
     let elem = e.target as any;
-
     //have to find out if i clicked on the svg the path or the div thats why i need this
     if (
       !e.target.classList.contains("navbar-navicon") &&
@@ -177,41 +149,11 @@ export const Navbar: React.FC = () => {
           <img src="https://images.ctfassets.net/23aumh6u8s0i/6uBzrqHNLlSAoER6HtgDN0/accd8f871b1de37f472b94da4346afa2/python-hero" />
           <p>George Fakidis</p>
         </div>
-        <openDropdownContext.Provider value={openDropdown}>
-          <div className="navmenu" ref={navmenu}>
-            {/* text stuff here */}
-            <NavMenuOption
-              tooltipText="Menu"
-              Icon={TiThSmall}
-              onClick={(e) => clickDropdownOpen("Menu")}
-              Dropdown={NotificationsDropdown}
-            />
-            <NavMenuOption
-              tooltipText="Messenger"
-              Icon={FaFacebookMessenger}
-              onClick={(e) => clickDropdownOpen("Messenger")}
-              Dropdown={NotificationsDropdown}
-            />
-            <NavMenuOption
-              tooltipText="Notifications"
-              Icon={FaBell}
-              onClick={(e) => clickDropdownOpen("Notifications")}
-              Dropdown={NotificationsDropdown}
-            />
-            <NavMenuOption
-              tooltipText="Account"
-              Icon={FaCaretDown}
-              onClick={(e) => clickDropdownOpen("Account")}
-              Dropdown={OptionsDropdown}
-            />
-          </div>
-        </openDropdownContext.Provider>
+        <NavMenu />
       </div>
     </div>
   );
 };
-
-export const DropdownConsumer = openDropdownContext;
 
 interface Props {
   tooltip: string;

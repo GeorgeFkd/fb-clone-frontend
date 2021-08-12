@@ -1,7 +1,7 @@
 import React from "react";
 import { IconContext } from "react-icons/lib";
 import "./NavMenuOption.css";
-import { DropdownConsumer } from "../Navbar/Navbar";
+import { DropdownContext } from "../Navbar/NavMenu/NavMenu";
 interface Props {
   //todo implement the open close stuff the old way and add dropdowns
   // any bcs icons are from different libs
@@ -9,6 +9,7 @@ interface Props {
   tooltipText: string;
   Dropdown?: any;
   onClick: (e: any) => void;
+  data_testid: string;
 }
 
 const NavMenuOption: React.FC<Props> = ({
@@ -16,12 +17,17 @@ const NavMenuOption: React.FC<Props> = ({
   tooltipText,
   Dropdown,
   onClick,
+  data_testid,
 }) => {
   console.log("not rendered yet");
   return (
-    <DropdownConsumer.Consumer>
+    <DropdownContext.Consumer>
       {(currentlyOpen) => (
-        <div className="navmenu-option" onClick={onClick}>
+        <div
+          className="navmenu-option"
+          onClick={onClick}
+          // data-testid={`${data_testid}`}
+        >
           <IconContext.Provider value={{ className: "navmenu-option-icon" }}>
             <Icon />
             {console.log("the context currently is", currentlyOpen)}
@@ -32,7 +38,7 @@ const NavMenuOption: React.FC<Props> = ({
           {tooltipText === currentlyOpen ? <Dropdown /> : <></>}
         </div>
       )}
-    </DropdownConsumer.Consumer>
+    </DropdownContext.Consumer>
   );
 };
 
