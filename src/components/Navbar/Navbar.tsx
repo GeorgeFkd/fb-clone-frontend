@@ -4,28 +4,11 @@ import { FaSearch, FaFacebook } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import SearchDropdown from "../Dropdowns/SearchDropdown";
+import SearchDropdown from "../Dropdowns/Search/SearchDropdown";
 import { requestAvailableGroups } from "../utils/db.requests";
 import NavMenu from "./NavMenu/NavMenu";
 import { useRef } from "react";
-import { useReducer } from "react";
 import { NavLinksContainer } from "./NavLinksContainer/NavLinksContainer";
-
-// enum  NavbarActionKind{
-//   FOCUS_ON_INPUT="FOCUS ON INPUT",
-//   SET_
-
-// }
-
-// interface NavbarState{
-//   searchTerm:string;
-//   groupsToSearch:any[];
-//   inputIsFocused:boolean;
-// }
-
-// interface NavbarAction{
-//   type:
-// }
 
 export const Navbar: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");

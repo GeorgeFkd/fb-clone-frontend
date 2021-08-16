@@ -1,8 +1,9 @@
 import React from "react";
 import { FaBell, FaCaretDown, FaFacebookMessenger } from "react-icons/fa";
 import { TiThSmall } from "react-icons/ti";
-import NotificationsDropdown from "../../Dropdowns/NotificationsDropdown";
-import OptionsDropdown from "../../Dropdowns/OptionsDropdown";
+import MessengerDropdown from "../../Dropdowns/MessengerDropdown/Messenger";
+import NotificationsDropdown from "../../Dropdowns/NotificationsDropdown/NotificationsDropdown";
+import OptionsDropdown from "../../Dropdowns/OptionsDropdown/OptionsDropdown";
 import NavMenuOption from "../../NavMenuOption/NavMenuOption";
 const openDropdownContext = React.createContext("");
 
@@ -20,19 +21,19 @@ const NavMenu = () => {
     <openDropdownContext.Provider value={openDropdown}>
       <div className="navmenu" data-testid="navmenu">
         {/* text stuff here */}
-        <NavMenuOption
+        {/* <NavMenuOption
           tooltipText="Menu"
           Icon={TiThSmall}
           onClick={(e) => clickDropdownOpen("Menu")}
           Dropdown={NotificationsDropdown}
           data_testid="Menu"
           onClickOutside={() => setOpenDropdown("")}
-        />
+        /> */}
         <NavMenuOption
           tooltipText="Messenger"
           Icon={FaFacebookMessenger}
           onClick={(e) => clickDropdownOpen("Messenger")}
-          Dropdown={NotificationsDropdown}
+          Dropdown={MessengerDropdown}
           data_testid="Messenger"
           onClickOutside={() => setOpenDropdown("")}
         />

@@ -109,7 +109,6 @@
   align-items: center;
   gap: 0.5rem;
   border-radius: 9999px;
-  padding: 0px 4px;
 }
 
 .user-avatar:hover {
