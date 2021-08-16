@@ -1,0 +1,14 @@
+.searchdropdown-container {
+  position: absolute;
+  top: 3rem;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: lawngreen;
+  z-index: 5;
+}
+
+.searchdropdown-item {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
