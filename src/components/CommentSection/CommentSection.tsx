@@ -12,6 +12,7 @@ interface Props {
 }
 
 const CommentSection: React.FC<Props> = () => {
+  // probably memo the db request callback
   const [comments, setComments] = useState([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -41,7 +42,6 @@ const CommentSection: React.FC<Props> = () => {
         <span className="commentsection-toprow-text">Top Comments</span>
         <MdArrowDropDown className="commentsection-toprow-icon" />
       </div>
-      {/* extract to component to use for reply */}
       <CommentInput />
       {comments.map((comment) => {
         return <Comment {...comment} />;

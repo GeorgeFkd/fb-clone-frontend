@@ -10,6 +10,7 @@ interface Props {
   Dropdown?: any;
   onClick: (e: any) => void;
   data_testid: string;
+  onClickOutside: () => void;
 }
 
 const NavMenuOption: React.FC<Props> = ({
@@ -18,6 +19,7 @@ const NavMenuOption: React.FC<Props> = ({
   Dropdown,
   onClick,
   data_testid,
+  onClickOutside,
 }) => {
   console.log("not rendered yet");
   return (
@@ -35,7 +37,11 @@ const NavMenuOption: React.FC<Props> = ({
           {/* tooltip */}
           <span className="navmenu-option-tooltip">{tooltipText}</span>
 
-          {tooltipText === currentlyOpen ? <Dropdown /> : <></>}
+          {tooltipText === currentlyOpen ? (
+            <Dropdown onClickOutside={onClickOutside} />
+          ) : (
+            <></>
+          )}
         </div>
       )}
     </DropdownContext.Consumer>

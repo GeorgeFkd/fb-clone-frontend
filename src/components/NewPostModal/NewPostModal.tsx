@@ -27,9 +27,6 @@ const NewPostModal: React.FC<Props> = ({ onClose }) => {
   const [groupSelected, setGroupSelected] = useState("");
   const [IsGroupSelectionDropdownOpen, setIsGroupSelectionDropdownOpen] =
     useState(false);
-  function handleChange(e: any) {
-    setPostContent(e.target.value);
-  }
   async function submitPost() {
     //works
     const data = {
@@ -88,7 +85,7 @@ const NewPostModal: React.FC<Props> = ({ onClose }) => {
           <input
             ref={inputRef}
             value={postContent}
-            onChange={handleChange}
+            onChange={(e) => setPostContent(e.target.value)}
             type="text"
             placeholder="What is on your mind?"
             className="postmodal-main-input"
@@ -107,14 +104,10 @@ const NewPostModal: React.FC<Props> = ({ onClose }) => {
               <FiMapPin style={{ color: "orange" }} />
 
               <GiMicrophone style={{ color: "red" }} />
-
-              {/* <IconContext.Provider value={{ color: "" }}>
-                <MdPhotoLibrary />
-              </IconContext.Provider> */}
             </IconContext.Provider>
           </div>
         </div>
-        {/* disable it properly with js */}
+
         <button
           className="postmodal-submit"
           onClick={submitPost}

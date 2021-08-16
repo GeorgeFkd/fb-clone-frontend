@@ -1,19 +1,21 @@
-import FeedbackIcon from "@material-ui/icons/Feedback";
-import SettingsIcon from "@material-ui/icons/Settings";
-import HelpIcon from "@material-ui/icons/Help";
-
-import { FiHelpCircle, FiMoon, FiLogOut } from "react-icons/fi";
+import { MdFeedback } from "react-icons/md";
+import { FiHelpCircle, FiLogOut } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Option from "./Option";
 import Avatar from "../utils/Avatar";
-import { MdFeedback } from "react-icons/md";
 import "./OptionsDropdown.css";
-interface Props {}
+import { useRef } from "react";
+import { useClickOutside } from "../../hooks/useClickOutside";
+interface Props {
+  onClickOutside: () => void;
+}
 
-const OptionsDropdown: React.FC<Props> = ({}) => {
+const OptionsDropdown: React.FC<Props> = ({ onClickOutside }) => {
+  const dropdownref = useRef<HTMLDivElement>(null);
+  useClickOutside(dropdownref, onClickOutside);
+  // const dropdownref = useClickOutside(onClickOutside);
   return (
-    <div className="options-dropdown">
+    <div className="options-dropdown" ref={dropdownref}>
       <div className="options-dropdown-title">
         <Avatar src={""} size={3} />
         <div className="options-dropdown-title-content">
@@ -21,7 +23,10 @@ const OptionsDropdown: React.FC<Props> = ({}) => {
             Geon Fkd
             {/* {session.user.name} */}
           </p>
-          <p className="options-dropdown-title-content-prompt">
+          <p
+            className="options-dropdown-title-content-prompt"
+            onClick={(e) => console.log("hello from dropdown")}
+          >
             See your profile
           </p>
         </div>
@@ -29,7 +34,7 @@ const OptionsDropdown: React.FC<Props> = ({}) => {
       </div>
       <hr />
       <div className="options-dropdown-feedback">
-        <FeedbackIcon className="options-dropdown-feedback-icon" />
+        <MdFeedback className="options-dropdown-feedback-icon" />
         <div className="options-dropdown-feedback-prompt">
           <p>Give FeedBack</p>
           <p>Help us improve the new facebook</p>

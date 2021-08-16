@@ -35,15 +35,12 @@ const PostFeed: React.FC = () => {
         return [...postsOfGroup];
       });
       console.log(allPosts, "inside fetch");
-      // setIsLoading(false);
       return allPosts;
-      // setPosts(postsPerGroup);
     };
     fetchFromApiAndUpdateState().then((res) => {
       setPosts(res);
       console.log("posts set");
     });
-    setIsLoading(false);
   }, []);
   //? i gotta trigger one more rerender to properly use the posts
   return (

@@ -1,7 +1,5 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ImCross } from "react-icons/im";
 import "./NewGroupModal.css";
 import Avatar from "../utils/Avatar";

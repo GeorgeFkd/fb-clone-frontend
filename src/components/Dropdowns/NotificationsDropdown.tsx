@@ -4,12 +4,24 @@ import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import "./NotificationsDropdown.css";
 import { IconContext } from "react-icons/lib";
 import { IoIosMore } from "react-icons/io";
-interface Props {}
+import { useEffect } from "react";
+import { useRef } from "react";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
-const NotificationsDropdown: React.FC<Props> = () => {
-  //todo fix scroll issue
+interface Props {
+  onClickOutside: () => void;
+}
+
+const NotificationsDropdown: React.FC<Props> = ({ onClickOutside }) => {
+  //! when i click inside the clickoutside thing triggers
+  const dropdownref = useRef<HTMLDivElement>(null);
+  useClickOutside(dropdownref, onClickOutside);
   return (
-    <div className="notifications-dropdown" data-testid="NotificationsDropdown">
+    <div
+      className="notifications-dropdown"
+      data-testid="NotificationsDropdown"
+      ref={dropdownref}
+    >
       <div className="notifications-dropdown-title-container">
         <h1
           className="notifications-dropdown-title"

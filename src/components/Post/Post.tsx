@@ -26,6 +26,7 @@ const Post: React.FC<PostType> = ({
         authorAvatar="https://i.pinimg.com/originals/a5/41/02/a541024b0989ea9b0bd470fcfc89dcb1.jpg"
         authorName={name}
         createdAt="8m"
+        //createdAt
         group_name={group_name}
       />
       <p className="post-content">

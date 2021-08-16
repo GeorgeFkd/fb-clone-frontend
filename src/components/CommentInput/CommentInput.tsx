@@ -33,9 +33,6 @@ const CommentInput = () => {
       console.log("the end was fkcing sad");
     }
   }
-  function handleChange(e: any) {
-    setCommentContent(e.target.value);
-  }
   return (
     <div className="commentsection-newcomment">
       <Avatar
@@ -49,7 +46,7 @@ const CommentInput = () => {
           placeholder="write your comment here"
           className="commentsection-newcomment-input"
           value={commentContent}
-          onChange={handleChange}
+          onChange={(e) => setCommentContent(e.target.value)}
           ref={inputRef}
         />
         <div className="commentsection-newcomment-extraoptions">

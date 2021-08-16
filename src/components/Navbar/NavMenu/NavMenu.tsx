@@ -26,6 +26,7 @@ const NavMenu = () => {
           onClick={(e) => clickDropdownOpen("Menu")}
           Dropdown={NotificationsDropdown}
           data_testid="Menu"
+          onClickOutside={() => setOpenDropdown("")}
         />
         <NavMenuOption
           tooltipText="Messenger"
@@ -33,6 +34,7 @@ const NavMenu = () => {
           onClick={(e) => clickDropdownOpen("Messenger")}
           Dropdown={NotificationsDropdown}
           data_testid="Messenger"
+          onClickOutside={() => setOpenDropdown("")}
         />
         <NavMenuOption
           tooltipText="Notifications"
@@ -41,6 +43,7 @@ const NavMenu = () => {
           Dropdown={NotificationsDropdown}
           data_testid=""
           data-testid="Notifications"
+          onClickOutside={() => setOpenDropdown("")}
         />
         <NavMenuOption
           tooltipText="Account"
@@ -48,6 +51,7 @@ const NavMenu = () => {
           onClick={(e) => clickDropdownOpen("Account")}
           Dropdown={OptionsDropdown}
           data_testid="Account"
+          onClickOutside={() => setOpenDropdown("")}
         />
       </div>
     </openDropdownContext.Provider>
