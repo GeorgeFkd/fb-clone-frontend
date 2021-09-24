@@ -1,0 +1,96 @@
+.chatbox-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  border: solid 2px yellowgreen;
+  width: 21rem;
+  background-color: #161414;
+}
+
+.chatbox-top {
+  display: flex;
+  align-items: center;
+}
+
+.chatbox-top-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+}
+
+.chatbox-top-chatname {
+  font-size: 0.875rem;
+}
+
+.chatbox-top-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.chatbox-top-controls-icon {
+  border-radius: 9999px;
+  cursor: pointer;
+  color: blue;
+  font-size: 1.5rem;
+  padding: 0.25rem;
+}
+
+.chatbox-bottom-controls {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  padding: 0.5rem 0rem;
+}
+.chatbox-bottom-controls-icon {
+  border-radius: 9999px;
+  cursor: pointer;
+  color: blue;
+  font-size: 1.5rem;
+  padding: 0.125rem;
+}
+
+.chatbox-input-box {
+  display: flex;
+  align-items: center;
+  background-color: violet;
+  /* will need change in width */
+  width: 12rem;
+  border-radius: 9999px;
+  margin-left: auto;
+}
+
+.chatbox-input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  margin-right: 0.5rem;
+  padding: 0.5rem 0rem;
+  text-indent: 0.5rem;
+  flex-grow: 0;
+  width: 100%;
+}
+
+.chatbox-input::placeholder {
+}
+
+.chatbox-input::placeholder:focus {
+}
+/* this part is repeated a lot might need a common class */
+.chatbox-input-icon {
+  border-radius: 9999px;
+  cursor: pointer;
+  color: blue;
+  background-color: darkcyan;
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+.chatbox-chat-specific-icon {
+  border-radius: 9999px;
+  cursor: pointer;
+  color: blue;
+  font-size: 1.5rem;
+  padding: 0.125rem;
+}

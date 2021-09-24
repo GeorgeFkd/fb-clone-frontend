@@ -1,35 +1,7 @@
-import React from "react";
-import "./App.css";
-import { Navbar } from "./components/Navbar/Navbar";
-import HomePage from "./pages/HomePage";
-import { Switch, Route } from "react-router-dom";
-//* later keep an eye on project size with react icons
-import MarketPlace from "./pages/MarketPlace";
-import LoginPage from "./pages/LoginPage";
-import SignUpPage from "./pages/SignUpPage";
+// {"ast":null,"code":"var _jsxFileName = \"D:\\\\giorgos\\\\programming\\\\webdevP\\\\fb-clone\\\\my-app\\\\src\\\\components\\\\utils\\\\ProtectedRoute.tsx\";\nimport React from \"react\";\nimport { Route, Redirect } from \"react-router-dom\";\nimport { jsxDEV as _jsxDEV } from \"react/jsx-dev-runtime\";\n\nconst ProtectedRoute = ({\n  isAuth,\n  component: Component,\n  children,\n  ...rest\n}) => {\n  return /*#__PURE__*/_jsxDEV(Route, { ...rest,\n    render: props => {\n      if (isAuth()) {\n        console.log(children);\n        return children;\n      } else {\n        return /*#__PURE__*/_jsxDEV(Redirect, {\n          to: {\n            pathname: \"/\",\n            state: {\n              from: props.location\n            }\n          }\n        }, void 0, false, {\n          fileName: _jsxFileName,\n          lineNumber: 25,\n          columnNumber: 13\n        }, this);\n      }\n    }\n  }, void 0, false, {\n    fileName: _jsxFileName,\n    lineNumber: 17,\n    columnNumber: 5\n  }
 
-function App() {
-  return (
-    <div className="app__container">
-      {/* <hr /> */}
-      <Switch>
-        <Route path="/marketplace">
-          <Navbar />
-          <MarketPlace />
-        </Route>
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-        <Route path="/signup">
-          <SignUpPage />
-        </Route>
-        <Route path="/">
-          <Navbar />
-          <HomePage />
-        </Route>
-      </Switch>
-    </div>
-  );
-}
+const App: React.FC = () => {
+  return <div>Hello </div>;
+};
 
 export default App;

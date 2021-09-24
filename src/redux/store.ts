@@ -1,10 +1,11 @@
 // import reducers
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./slices/counterSlice";
-
+import chatBoxReducer from "./slices/chatboxSlice";
 export default configureStore({
   reducer: {
     counter: counterReducer,
+    chat: chatBoxReducer,
     // user:userReducer
   },
 });

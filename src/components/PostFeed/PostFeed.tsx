@@ -2,7 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Post from "../Post/Post";
-import { GetGroupsOfCurrentUser, GetPostsOfGroup } from "../utils/db.requests";
+import { GetPostsOfGroup } from "../utils/api/GetPostsOfGroup";
+import { GetGroupsOfCurrentUser } from "../utils/api/Group/GetGroupsOfCurrentUser";
 import "./PostFeed.css";
 interface PostType {
   //change to:
@@ -61,7 +62,6 @@ const PostFeed: React.FC = () => {
           />
         );
       })}
-      {console.dir(posts)}
     </div>
   );
 };

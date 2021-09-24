@@ -1,32 +1,29 @@
 import React from "react";
-import CreatePost from "../CreatePost/CreatePost";
-import CreateGroup from "../CreateGroup/CreateGroup";
-import "./MainFeed.css";
-import PostFeed from "../PostFeed/PostFeed";
-import StoryFeed from "../StoryFeed/StoryFeed";
-import { useState } from "react";
-import { getCurrentUserFriends } from "../utils/db.requests";
+import "./Navbar.css";
+import { FaSearch, FaFacebook } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import SearchDropdown from "../Dropdowns/Search/SearchDropdown";
+import { requestAvailableGroups } from "../utils/api/requestAvailableGroups";
+import NavMenu from "./NavMenu/NavMenu";
+import { useRef } from "react";
+import { NavLinksContainer } from "./NavLinksContainer/NavLinksContainer";
 
-const MainFeed = () => {
-  const [open, setOpen] = useState(false);
-  async function dbRequest() {
-    const friendsRequest = await getCurrentUserFriends();
-    if (friendsRequest.success) {
-      console.log(friendsRequest.friends);
-    } else {
-      console.log("shit");
+export const Navbar: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [groupsToSearch, setGroupsToSearch] = useState<any[]>([]);
+  const [searchInputIsFocused, setSearchInputIsFocused] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    console.log("applied event listeners");
+
+    async function fetchFromApiAndUpdateState() {
+      let groups = await requestAvailableGroups();
+      setGroupsToSearch(groups);
     }
-  }
-  return (
-    <div className="mainfeed__container">
-      <StoryFeed />
-      <CreatePost />
-      {/* lol */}
-      <CreateGroup />
-      <button onClick={(e) => dbRequest()}>Db Request</button>
-      <PostFeed />
-    </div>
-  );
-};
+    fetchFromApiAndUpdateState();
+  }, []);
 
-export default MainFeed;
+  useEffect(() => {
+    async function fetchFromApiAndUpd

@@ -15,7 +15,7 @@ import { useRef } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import UserGroupsDropdown from "../Dropdowns/UserGroupsDropdown";
-import { createNewPost } from "../utils/db.requests";
+import { createNewPost } from "../utils/api/createNewPost";
 
 interface Props {
   onClose: () => void;
